@@ -1,6 +1,7 @@
 # Overall Description
 
 The folder structure is divided into `frontend` and `backend`. Each folder has its own `README.md` file describing further technical details.
+This project is utylizing secure vault [ImmuDB](https://vault.immudb.io/auth/signin), as a cloud database. Env files involves keys and links to the vault.
 
 # Prerequisites
 
