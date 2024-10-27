@@ -1,10 +1,44 @@
 import { Router } from "express";
 import {
   addAccountingInfo,
+  deleteAccountingInfo,
   getAccountingInfo,
+  updateAccountingInfo,
 } from "../controllers/accountingController";
 
 const accountingRoutes = Router();
+
+/**
+ * @swagger
+ * /api/accounting:
+ *   get:
+ *     summary: Get accounting information
+ *     description: This endpoint allows users to get accounting information from cloud vault. It validates the input data against a defined schema and returns appropriate success or error messages.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               page:
+ *                 type: number
+ *                 description: Page number
+ *               perPage:
+ *                 type: number
+ *                 description: Elements per page
+ *             required:
+ *               - page
+ *               - perPage
+ *     responses:
+ *       201:
+ *         description: Accounting information successfully fetched
+ *       400:
+ *         description: Bad request due to validation error
+ *       500:
+ *         description: Internal server error
+ */
+accountingRoutes.get("/", getAccountingInfo);
 
 /**
  * @swagger
@@ -54,13 +88,14 @@ const accountingRoutes = Router();
  */
 
 accountingRoutes.post("/", addAccountingInfo);
-
 /**
  * @swagger
- * /api/accounting:
- *   get:
- *     summary: Get accounting information
- *     description: This endpoint allows users to get accounting information from cloud vault. It validates the input data against a defined schema and returns appropriate success or error messages.
+ * /accounting:
+ *   put:
+ *     summary: Update accounting information
+ *     description: Updates the accounting information for a specific record.
+ *     tags:
+ *       - Accounting
  *     requestBody:
  *       required: true
  *       content:
@@ -68,23 +103,51 @@ accountingRoutes.post("/", addAccountingInfo);
  *           schema:
  *             type: object
  *             properties:
- *               page:
- *                 type: number
- *                 description: Page number
- *               perPage:
- *                 type: number
- *                 description: Elements per page
+ *               field1:
+ *                 type: string
+ *                 description: Description of field1
+ *               field2:
+ *                 type: integer
+ *                 description: Description of field2
  *             required:
- *               - page
- *               - perPage
+ *               - field1
+ *               - field2
  *     responses:
- *       201:
- *         description: Accounting information successfully fetched
+ *       200:
+ *         description: Accounting information updated successfully.
  *       400:
- *         description: Bad request due to validation error
+ *         description: Invalid request data.
+ *       404:
+ *         description: Accounting information not found.
  *       500:
- *         description: Internal server error
+ *         description: Server error.
  */
-accountingRoutes.get("/", getAccountingInfo);
+accountingRoutes.put("/", updateAccountingInfo);
+/**
+ * @swagger
+ * /accounting:
+ *   delete:
+ *     summary: Delete accounting information
+ *     description: Deletes the accounting information for a specific record.
+ *     tags:
+ *       - Accounting
+ *     parameters:
+ *       - in: query
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the accounting record to delete
+ *     responses:
+ *       200:
+ *         description: Accounting information deleted successfully.
+ *       400:
+ *         description: Invalid request data.
+ *       404:
+ *         description: Accounting information not found.
+ *       500:
+ *         description: Server error.
+ */
+accountingRoutes.delete("/", deleteAccountingInfo);
 
 export default accountingRoutes;

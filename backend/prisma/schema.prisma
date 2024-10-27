@@ -1,0 +1,21 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AccountingRecord {
+  id            String @id @default(uuid())
+  accountNumber String
+  accountName   String
+  iban          String
+  address       String
+  amount        Float
+  type          String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

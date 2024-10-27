@@ -6,6 +6,7 @@ enum TransactionType {
 }
 
 export const putAccountingSchema = z.object({
+  id: z.string().min(1, "Id is required"),
   accountNumber: z
     .string()
     .min(1, "Account Number is required")
