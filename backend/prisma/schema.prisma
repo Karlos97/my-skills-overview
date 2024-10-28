@@ -8,6 +8,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum BankTransferType {
+  sending
+  receiving
+}
+
 model AccountingRecord {
   id            String @id @default(uuid())
   accountNumber String
@@ -15,7 +20,7 @@ model AccountingRecord {
   iban          String
   address       String
   amount        Float
-  type          String
+  type          BankTransferType
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }

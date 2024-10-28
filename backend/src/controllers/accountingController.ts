@@ -3,6 +3,7 @@ import { ZodError } from "zod";
 import { PrismaClient } from "@prisma/client";
 import {
   getAccountingSchema,
+  postAccountingSchema,
   putAccountingSchema,
 } from "../validation/accountingSchema";
 import logger from "../logger";
@@ -12,75 +13,40 @@ import redisClient from "../config/redisSetup";
 const prisma = new PrismaClient();
 
 interface Record {
-  id: string;
   accountNumber: string;
   accountName: string;
   iban: string;
   address: string;
   amount: number;
-  type: string;
+  type: "sending" | "receiving";
+}
+
+interface UpdateRecord extends Record {
+  id: string;
 }
 
 interface ResponseData {
   page: number;
   perPage: number;
-  revisions: Record[];
+  records: Record[];
 }
 
-// Add Accounting Record
-export const addAccountingInfo = async (req: Request, res: Response) => {
-  try {
-    const data: Record = putAccountingSchema.parse(req.body);
-
-    // Save to database
-    await prisma.accountingRecord.create({
-      accountNumber: data.accountNumber,
-      accountName: data.accountName,
-      iban: data.iban,
-      address: data.address,
-      amount: data.amount,
-      type: data.type,
-    });
-
-    await redisClient.setEx(
-      `record:${data.id}`,
-      3600,
-      JSON.stringify({ data })
-    );
-
-    logger.info("Accounting information added.");
-    res.status(201).json({ message: "Accounting information added." });
-  } catch (error) {
-    if (error instanceof ZodError) {
-      const errorMessage = zodErrorMessageConverter(error);
-      res.status(400).json({ error: errorMessage });
-      logger.error(
-        `This is a Zod validation error log message: ${errorMessage}`
-      );
-    } else {
-      logger.error(`Error adding data: ${error}`);
-      res.status(500).json({ error: "Failed to add data." });
-    }
-  }
-};
-
-// Get Accounting Records with Pagination
 export const getAccountingInfo = async (req: Request, res: Response) => {
   try {
     const bodyData = getAccountingSchema.parse(req.query);
 
-    const cachedRecord = (await redisClient.get(
+    const cachedRecord = await redisClient.get(
       `recordPage:${bodyData.page}&recordPerPage:${bodyData.perPage}`
-    )) as unknown as ResponseData;
+    );
 
     if (cachedRecord) {
       logger.info("Accounting information fetched from cache.");
-      res.status(200).json({ ...cachedRecord });
+      const parsedData = JSON.parse(cachedRecord) as unknown as ResponseData;
+      res.status(200).json(parsedData);
       return;
     }
 
-    // Fetch from database with pagination
-    const revisions = await prisma.accountingRecord.findMany({
+    const accountingRecords = await prisma.accountingRecord.findMany({
       skip: (bodyData.page - 1) * bodyData.perPage,
       take: bodyData.perPage,
     });
@@ -88,7 +54,7 @@ export const getAccountingInfo = async (req: Request, res: Response) => {
     const responseData: ResponseData = {
       page: bodyData.page,
       perPage: bodyData.perPage,
-      revisions,
+      records: accountingRecords,
     };
 
     await redisClient.setEx(
@@ -111,10 +77,46 @@ export const getAccountingInfo = async (req: Request, res: Response) => {
   }
 };
 
-// Update Accounting Record
+export const addAccountingInfo = async (req: Request, res: Response) => {
+  try {
+    const data: Record = postAccountingSchema.parse(req.body);
+
+    const newRecord = await prisma.accountingRecord.create({
+      data: {
+        accountNumber: data.accountNumber,
+        accountName: data.accountName,
+        iban: data.iban,
+        address: data.address,
+        amount: data.amount,
+        type: data.type,
+      },
+    });
+
+    await redisClient.setEx(
+      `record:${newRecord.createdAt}`,
+      3600,
+      JSON.stringify({ data })
+    );
+
+    logger.info("Accounting information added.");
+    res.status(201).json({ message: "Accounting information added." });
+  } catch (error) {
+    if (error instanceof ZodError) {
+      const errorMessage = zodErrorMessageConverter(error);
+      res.status(400).json({ error: errorMessage });
+      logger.error(
+        `This is a Zod validation error log message: ${errorMessage}`
+      );
+    } else {
+      logger.error(`Error adding data: ${error}`);
+      res.status(500).json({ error: "Failed to add data." });
+    }
+  }
+};
+
 export const updateAccountingInfo = async (req: Request, res: Response) => {
   try {
-    const data: Record = putAccountingSchema.parse(req.body);
+    const data: UpdateRecord = putAccountingSchema.parse(req.body);
     const { id } = data;
 
     // Update the record in the database

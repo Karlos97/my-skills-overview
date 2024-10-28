@@ -9,24 +9,18 @@ import { ReactNode, useState } from 'react';
 interface Data {
   page: number;
   perPage: number;
-  revisions: {
-    document: Record;
-    revision: string;
-    transactionId: string;
-  }[];
+  records: Record[];
   searchId: string;
 }
 
 interface Record {
-  _id: string;
-  data?: {
-    accountNumber: string;
-    accountName: string;
-    iban: string;
-    address: string;
-    amount: number;
-    type: string;
-  };
+  id: string;
+  accountNumber: string;
+  accountName: string;
+  iban: string;
+  address: string;
+  amount: number;
+  type: string;
 }
 const TableHeader = ({ children }: { children: ReactNode }) => (
   <th className="whitespace-nowrap px-4 py-2 font-medium text-slate-800 text-left">
@@ -71,15 +65,6 @@ const RecordsTable = () => {
     return <div className="flex justify-center">Error: {error.message}</div>;
   }
 
-  const defaultData = {
-    accountNumber: '',
-    accountName: '',
-    iban: '',
-    address: '',
-    amount: 0,
-    type: '',
-  };
-
   const onPaginationButtonClickHandler = (
     e: React.MouseEvent<HTMLButtonElement>,
     value: number,
@@ -104,21 +89,20 @@ const RecordsTable = () => {
               <TableHeader>Type</TableHeader>
             </tr>
           </thead>
-          {data?.revisions.length ? (
+          {data?.records?.length ? (
             <TableBody>
-              {data?.revisions.map(({ document: { _id, data } }) => {
-                const {
+              {data?.records.map(
+                ({
+                  id,
                   accountNumber,
                   accountName,
                   iban,
                   address,
                   amount,
                   type,
-                } = data || defaultData;
-
-                return (
-                  <TableRow key={_id}>
-                    <TableData>{_id}</TableData>
+                }) => (
+                  <TableRow key={id}>
+                    <TableData>{id}</TableData>
                     <TableData>{accountNumber}</TableData>
                     <TableData>{accountName}</TableData>
                     <TableData>{iban}</TableData>
@@ -126,15 +110,17 @@ const RecordsTable = () => {
                     <TableData>{amount}</TableData>
                     <TableData>{type}</TableData>
                   </TableRow>
-                );
-              })}
+                ),
+              )}
             </TableBody>
           ) : (
-            <tr>
-              <TableData className="text-center" colSpan={7}>
-                This page is empty!
-              </TableData>
-            </tr>
+            <TableBody>
+              <tr>
+                <TableData className="text-center" colSpan={7}>
+                  This page is empty!
+                </TableData>
+              </tr>
+            </TableBody>
           )}
         </Table>
       </div>
@@ -152,7 +138,7 @@ const RecordsTable = () => {
 
           <PaginationButton
             onClick={(e) => onPaginationButtonClickHandler(e, 1)}
-            disabled={(data?.revisions?.length || 0) < perPage}
+            disabled={(data?.records?.length || 0) < perPage}
             isIcon
           >
             <IconRight />

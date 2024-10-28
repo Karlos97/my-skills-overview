@@ -20,7 +20,7 @@ Local development setup is described here. The production setup is detailed in t
 
 - You will need node 20.9 to run this project
 - Update the `.env` file with:
-  - `VITE_IMMUDB_BACKEND_LINK`: the backend link, e.g., `http://127.0.0.1:3000`
+  - `VITE_BACKEND_LINK`: the backend link, e.g., `http://127.0.0.1:3000`
 - Run `yarn install` to install dependencies.
 - Run `yarn dev` to start the frontend in development mode.
 - Access the UI at `localhost:5173`.
