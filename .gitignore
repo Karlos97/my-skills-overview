@@ -1,11 +1,14 @@
+########### DOCKER ###########
+dockerData
+
 ########### BACKEND ###########
-./backend/node_modules
-./backend/dist
+backend/node_modules
+backend/dist
 
 ########### FRONTEND ###########
 
-./frontend/node_modules
-./frontend/dist
+frontend/node_modules
+frontend/dist
 
 ########### ENV ###########
 .env

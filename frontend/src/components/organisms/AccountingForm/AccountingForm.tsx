@@ -6,7 +6,7 @@ import Select from '@atoms/Select/Select';
 import Button from '@atoms/Button/Button';
 import useErrorNotification from '@hooks/useErrorNotification';
 import ErrorNotification from '@atoms/ErrorNotification/ErrorNotification';
-import useFetchAccountingRecords from '@/helpers/hooks/useFetchAccountingRecords';
+import useAddAccountingRecord from '@/helpers/hooks/useAddAccountingRecord';
 
 enum TransactionType {
   SENDING = 'sending',
@@ -40,7 +40,7 @@ type FormData = z.infer<typeof formSchema>;
 const AccountingForm = () => {
   const { error, isErrorVisible, triggerError } = useErrorNotification();
 
-  const mutation = useFetchAccountingRecords({
+  const mutation = useAddAccountingRecord({
     queryKey: ['records'],
     triggerError,
   });

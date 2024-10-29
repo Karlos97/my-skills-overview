@@ -5,6 +5,7 @@ import {
   getAccountingSchema,
   postAccountingSchema,
   putAccountingSchema,
+  removeAccountingSchema,
 } from "../validation/accountingSchema";
 import logger from "../logger";
 import zodErrorMessageConverter from "../helpers/zodErrorMessageConverter";
@@ -25,6 +26,10 @@ interface UpdateRecord extends Record {
   id: string;
 }
 
+interface RemoveRecord {
+  id: string;
+}
+
 interface ResponseData {
   page: number;
   perPage: number;
@@ -39,7 +44,8 @@ export const getAccountingInfo = async (req: Request, res: Response) => {
       `recordPage:${bodyData.page}&recordPerPage:${bodyData.perPage}`
     );
 
-    if (cachedRecord) {
+    // Get cache only for production
+    if (cachedRecord && process.env.NODE_ENV === "production") {
       logger.info("Accounting information fetched from cache.");
       const parsedData = JSON.parse(cachedRecord) as unknown as ResponseData;
       res.status(200).json(parsedData);
@@ -56,12 +62,14 @@ export const getAccountingInfo = async (req: Request, res: Response) => {
       perPage: bodyData.perPage,
       records: accountingRecords,
     };
-
-    await redisClient.setEx(
-      `recordPage:${bodyData.page}&recordPerPage:${bodyData.perPage}`,
-      3600,
-      JSON.stringify(responseData)
-    );
+    // Cache date only on production
+    if (process.env.NODE_ENV === "production") {
+      await redisClient.setEx(
+        `recordPage:${bodyData.page}&recordPerPage:${bodyData.perPage}`,
+        3600,
+        JSON.stringify(responseData)
+      );
+    }
 
     logger.info("Accounting information fetched and cached.");
     res.status(200).json(responseData);
@@ -91,6 +99,7 @@ export const addAccountingInfo = async (req: Request, res: Response) => {
         type: data.type,
       },
     });
+    console.log("🚀 ~ addAccountingInfo ~ newRecord:", newRecord);
 
     await redisClient.setEx(
       `record:${newRecord.createdAt}`,
@@ -119,7 +128,6 @@ export const updateAccountingInfo = async (req: Request, res: Response) => {
     const data: UpdateRecord = putAccountingSchema.parse(req.body);
     const { id } = data;
 
-    // Update the record in the database
     const updatedRecord = await prisma.accountingRecord.update({
       where: { id },
       data: {
@@ -131,7 +139,6 @@ export const updateAccountingInfo = async (req: Request, res: Response) => {
       },
     });
 
-    // Update the cache
     await redisClient.setEx(
       `record:${id}`,
       3600,
@@ -155,22 +162,21 @@ export const updateAccountingInfo = async (req: Request, res: Response) => {
   }
 };
 
-// Delete Accounting Record
 export const deleteAccountingInfo = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id }: RemoveRecord = removeAccountingSchema.parse(req.body);
+    console.log("🚀 ~ deleteAccountingInfo ~ id:", id);
 
-    // Delete from the database
     await prisma.accountingRecord.delete({
       where: { id },
     });
 
-    // Remove from cache
     await redisClient.del(`record:${id}`);
 
     logger.info("Accounting information deleted.");
     res.status(200).json({ message: "Accounting information deleted." });
   } catch (error) {
+    console.log("🚀 ~ deleteAccountingInfo ~ error:", error);
     if (error instanceof ZodError) {
       const errorMessage = zodErrorMessageConverter(error);
       res.status(400).json({ error: errorMessage });

@@ -5,15 +5,15 @@ import {
 } from '@tanstack/react-query';
 import { backendLink } from '@helpers/constans';
 
-interface UseFetchAccountingRecords {
+interface UseAddAccountingRecord {
   queryKey: string[];
   triggerError: (message: string) => void;
 }
 
-const useFetchAccountingRecords = ({
+const useAddAccountingRecord = ({
   queryKey,
   triggerError,
-}: UseFetchAccountingRecords): UseMutationResult => {
+}: UseAddAccountingRecord): UseMutationResult => {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -49,4 +49,4 @@ const useFetchAccountingRecords = ({
   });
 };
 
-export default useFetchAccountingRecords;
+export default useAddAccountingRecord;

@@ -53,3 +53,7 @@ export const postAccountingSchema = z.object({
 export const putAccountingSchema = postAccountingSchema.extend({
   id: z.string().min(1, "Id is required"),
 });
+
+export const removeAccountingSchema = z.object({
+  id: z.string().min(1, "Id is required"),
+});
