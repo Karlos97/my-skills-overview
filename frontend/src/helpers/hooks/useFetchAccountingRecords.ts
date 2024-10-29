@@ -3,22 +3,22 @@ import {
   UseMutationResult,
   useQueryClient,
 } from '@tanstack/react-query';
-import { immudbBackendLink } from '@helpers/constans';
+import { backendLink } from '@helpers/constans';
 
-interface UseApiMutation {
+interface UseFetchAccountingRecords {
   queryKey: string[];
   triggerError: (message: string) => void;
 }
 
-const useApiMutation = ({
+const useFetchAccountingRecords = ({
   queryKey,
   triggerError,
-}: UseApiMutation): UseMutationResult => {
+}: UseFetchAccountingRecords): UseMutationResult => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (data) => {
-      const response = await fetch(`${immudbBackendLink}/api/accounting`, {
+      const response = await fetch(`${backendLink}/api/accounting`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,4 +49,4 @@ const useApiMutation = ({
   });
 };
 
-export default useApiMutation;
+export default useFetchAccountingRecords;

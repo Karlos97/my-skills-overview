@@ -17,13 +17,13 @@ const PaginationButton = ({
   isIcon,
 }: PaginationButtonProps) => (
   <li
-    className={`${
+    className={`  ${
       isActive
-        ? 'block size-8 rounded border-blue-600 bg-blue-600 dar:border-gray-500 dark:bg-gray-500 text-center leading-8 text-white'
+        ? 'block size-8 rounded border-blue-600 bg-blue-600 dark:border-gray-500 dark:bg-gray-500 text-center leading-8 text-white'
         : ''
     } ${
       isIcon
-        ? 'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180'
+        ? 'inline-flex size-8 items-center justify-center rounded bg-white text-gray-900 rtl:rotate-180'
         : ''
     } `}
   >
@@ -31,12 +31,11 @@ const PaginationButton = ({
       children
     ) : (
       <Button
-        className={`${disabled ? '' : 'cursor-pointer'}
-          ${
-            isIcon
-              ? ''
-              : 'block size-8 rounded border border-gray-100 bg-white dar:border-gray-400 dark:bg-gray-100 text-center leading-8 text-gray-900'
-          }`}
+        className={`text-lg fill-gray-700 w-full h-full ${disabled ? '' : 'cursor-pointer'} ${
+          isIcon
+            ? 'flex justify-center items-center flex-col block size-8 rounded border border-gray-100 bg-white dark:bg-gray-100 dark:border-gray-400 hover:bg-white'
+            : ''
+        }`}
         onClick={onClick}
         disabled={disabled}
       >

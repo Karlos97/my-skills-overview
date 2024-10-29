@@ -1,9 +1,9 @@
 const IconRight = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="size-3"
     viewBox="0 0 20 20"
-    fill="currentColor"
+    fill="none"
+    className="size-4 fill-inherit"
   >
     <path
       fillRule="evenodd"

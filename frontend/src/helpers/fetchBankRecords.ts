@@ -1,6 +1,6 @@
-import { immudbBackendLink } from '@helpers/constans';
+import { backendLink } from '@helpers/constans';
 
-export const fetchRecords = async ({
+export const fetchBankRecords = async ({
   page,
   perPage,
 }: {
@@ -8,7 +8,7 @@ export const fetchRecords = async ({
   perPage: number;
 }) => {
   const response = await fetch(
-    `${immudbBackendLink}/api/accounting?page=${page}&perPage=${perPage}`,
+    `${backendLink}/api/accounting?page=${page}&perPage=${perPage}`,
   );
 
   if (!response.ok) {

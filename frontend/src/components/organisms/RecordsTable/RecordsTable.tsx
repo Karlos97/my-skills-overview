@@ -1,10 +1,14 @@
+import { ReactNode, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import IconLeft from '@atoms/Icons/IconLeft';
 import IconRight from '@atoms/Icons/IconRight';
 import { Table, TableBody, TableRow, TableWrapper } from '@atoms/Table/Table';
 import PaginationButton from '@atoms/PaginationButton/PaginationButton';
-import { fetchRecords } from '@helpers/fetchRecords';
-import { useQuery } from '@tanstack/react-query';
-import { ReactNode, useState } from 'react';
+import { fetchBankRecords } from '@helpers/fetchBankRecords';
+import Modal from '@organisms/Modal/Modal';
+import useModal from '@/helpers/hooks/useModal';
+import RemoveAccoutingRecordForm from '@organisms/RemoveAccoutingRecordForm/RemoveAccoutingRecordForm';
+import BinIcon from '@atoms/Icons/Bin';
 
 interface Data {
   page: number;
@@ -48,12 +52,16 @@ const TableData = ({
 );
 
 const RecordsTable = () => {
+  const { isModalOpen, openModal, closeModal } = useModal();
   const [pageNumber, setPageNumber] = useState(1);
+  const [removalModalRecordId, setRemovalModalRecordId] = useState<
+    string | null
+  >(null);
   const perPage = 15;
 
   const { data, error, isLoading } = useQuery<Data>({
     queryKey: ['records', pageNumber, perPage],
-    queryFn: () => fetchRecords({ page: pageNumber, perPage }),
+    queryFn: () => fetchBankRecords({ page: pageNumber, perPage }),
     enabled: !!pageNumber && !!perPage,
   });
 
@@ -74,78 +82,105 @@ const RecordsTable = () => {
     setPageNumber(pageNumber + value);
   };
 
+  const onShowRemoveWarningModal = ({ id }: { id: string }) => {
+    openModal();
+    setRemovalModalRecordId(id);
+  };
+
+  const onHideRemoveWarningModal = () => {
+    closeModal();
+    setRemovalModalRecordId(null);
+  };
+
   return (
-    <TableWrapper>
-      <div className="overflow-x-auto rounded-t-lg">
-        <Table>
-          <thead>
-            <tr>
-              <TableHeader>Id</TableHeader>
-              <TableHeader>Account Number</TableHeader>
-              <TableHeader>Account Name</TableHeader>
-              <TableHeader>IBAN</TableHeader>
-              <TableHeader>Address</TableHeader>
-              <TableHeader>Amount</TableHeader>
-              <TableHeader>Type</TableHeader>
-            </tr>
-          </thead>
-          {data?.records?.length ? (
-            <TableBody>
-              {data?.records.map(
-                ({
-                  id,
-                  accountNumber,
-                  accountName,
-                  iban,
-                  address,
-                  amount,
-                  type,
-                }) => (
-                  <TableRow key={id}>
-                    <TableData>{id}</TableData>
-                    <TableData>{accountNumber}</TableData>
-                    <TableData>{accountName}</TableData>
-                    <TableData>{iban}</TableData>
-                    <TableData>{address}</TableData>
-                    <TableData>{amount}</TableData>
-                    <TableData>{type}</TableData>
-                  </TableRow>
-                ),
-              )}
-            </TableBody>
-          ) : (
-            <TableBody>
+    <>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={onHideRemoveWarningModal}
+        isSmall
+        title="Remove record"
+      >
+        <RemoveAccoutingRecordForm id={removalModalRecordId} />
+      </Modal>
+      <TableWrapper>
+        <div className="overflow-x-auto rounded-t-lg">
+          <Table>
+            <thead>
               <tr>
-                <TableData className="text-center" colSpan={7}>
-                  This page is empty!
-                </TableData>
+                <TableHeader>Id</TableHeader>
+                <TableHeader>Account Number</TableHeader>
+                <TableHeader>Account Name</TableHeader>
+                <TableHeader>IBAN</TableHeader>
+                <TableHeader>Address</TableHeader>
+                <TableHeader>Amount</TableHeader>
+                <TableHeader>Type</TableHeader>
+                <TableHeader>Action</TableHeader>
               </tr>
-            </TableBody>
-          )}
-        </Table>
-      </div>
+            </thead>
+            {data?.records?.length ? (
+              <TableBody>
+                {data?.records.map(
+                  ({
+                    id,
+                    accountNumber,
+                    accountName,
+                    iban,
+                    address,
+                    amount,
+                    type,
+                  }) => (
+                    <TableRow key={id}>
+                      <TableData>{id}</TableData>
+                      <TableData>{accountNumber}</TableData>
+                      <TableData>{accountName}</TableData>
+                      <TableData>{iban}</TableData>
+                      <TableData>{address}</TableData>
+                      <TableData>{amount}</TableData>
+                      <TableData>{type}</TableData>
+                      <TableData className="flex justify-center">
+                        <BinIcon
+                          onClick={() => onShowRemoveWarningModal({ id })}
+                        />
+                      </TableData>
+                    </TableRow>
+                  ),
+                )}
+              </TableBody>
+            ) : (
+              <TableBody>
+                <tr>
+                  <TableData className="text-center" colSpan={7}>
+                    This page is empty!
+                  </TableData>
+                </tr>
+              </TableBody>
+            )}
+          </Table>
+        </div>
 
-      <div className="rounded-b-lg border-t border-gray-200 dark:border-gray-500 px-4 py-2 bg-gray-50 dark:bg-gray-400">
-        <ol className="flex justify-end gap-1 text-xs font-medium">
-          <PaginationButton
-            onClick={(e) => onPaginationButtonClickHandler(e, -1)}
-            disabled={pageNumber === 1}
-            isIcon
-          >
-            <IconLeft />
-          </PaginationButton>
-          <PaginationButton isActive>{pageNumber}</PaginationButton>
+        <div className="rounded-b-lg border-t border-gray-200 dark:border-gray-500 px-4 py-2 bg-gray-50 dark:bg-gray-400">
+          <ol className="flex justify-end gap-1 text-xs font-medium">
+            <PaginationButton
+              onClick={(e) => onPaginationButtonClickHandler(e, -1)}
+              disabled={pageNumber === 1}
+              isIcon
+              isLeftIcon
+            >
+              <IconLeft />
+            </PaginationButton>
+            <PaginationButton isActive>{pageNumber}</PaginationButton>
 
-          <PaginationButton
-            onClick={(e) => onPaginationButtonClickHandler(e, 1)}
-            disabled={(data?.records?.length || 0) < perPage}
-            isIcon
-          >
-            <IconRight />
-          </PaginationButton>
-        </ol>
-      </div>
-    </TableWrapper>
+            <PaginationButton
+              onClick={(e) => onPaginationButtonClickHandler(e, 1)}
+              disabled={(data?.records?.length || 0) < perPage}
+              isIcon
+            >
+              <IconRight />
+            </PaginationButton>
+          </ol>
+        </div>
+      </TableWrapper>
+    </>
   );
 };
 

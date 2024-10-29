@@ -6,7 +6,7 @@ import Select from '@atoms/Select/Select';
 import Button from '@atoms/Button/Button';
 import useErrorNotification from '@hooks/useErrorNotification';
 import ErrorNotification from '@atoms/ErrorNotification/ErrorNotification';
-import useApiMutation from '@/helpers/hooks/useMutation';
+import useFetchAccountingRecords from '@/helpers/hooks/useFetchAccountingRecords';
 
 enum TransactionType {
   SENDING = 'sending',
@@ -40,7 +40,10 @@ type FormData = z.infer<typeof formSchema>;
 const AccountingForm = () => {
   const { error, isErrorVisible, triggerError } = useErrorNotification();
 
-  const mutation = useApiMutation({ queryKey: ['records'], triggerError });
+  const mutation = useFetchAccountingRecords({
+    queryKey: ['records'],
+    triggerError,
+  });
 
   const {
     register,
@@ -61,7 +64,7 @@ const AccountingForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
       <Input
         label="Account Number"
         type="number"

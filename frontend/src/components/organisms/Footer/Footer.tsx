@@ -7,7 +7,7 @@ interface FooterProps {
 const Footer = ({ children }: FooterProps) => {
   return (
     <footer className="sticky bottom-0 py-4 bg-gray-50 dark:bg-gray-800">
-      <div className="flex justify-end">{children}</div>
+      <div className="flex justify-end items-end">{children}</div>
     </footer>
   );
 };
