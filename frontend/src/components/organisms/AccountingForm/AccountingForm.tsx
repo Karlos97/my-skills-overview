@@ -37,7 +37,9 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const AccountingForm = () => {
+const AccountingForm = ({ isEdit = false }: { isEdit?: boolean }) => {
+  // eslint-disable-next-line no-console
+  console.log('🚀 ~ AccountingForm ~ isEdit:', isEdit);
   const { error, isErrorVisible, triggerError } = useErrorNotification();
 
   const mutation = useAddAccountingRecord({

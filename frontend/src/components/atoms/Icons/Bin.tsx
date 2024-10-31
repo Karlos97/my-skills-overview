@@ -1,8 +1,6 @@
 const BinIcon = ({ onClick }: { onClick: () => void }) => (
   <svg
-    className="w-4 h-4 cursor-pointer text-red-500 dark:text-red-600"
-    version="1.1"
-    id="Capa_1"
+    className="size-4 hover:scale-125 cursor-pointer text-red-500 dark:text-red-600 mr-2"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 408.483 408.483"

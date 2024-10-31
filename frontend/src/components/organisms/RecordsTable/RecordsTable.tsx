@@ -9,6 +9,7 @@ import Modal from '@organisms/Modal/Modal';
 import useModal from '@/helpers/hooks/useModal';
 import RemoveAccoutingRecordForm from '@organisms/RemoveAccoutingRecordForm/RemoveAccoutingRecordForm';
 import BinIcon from '@atoms/Icons/Bin';
+import PencilIcon from '@/components/atoms/Icons/Pencil';
 
 interface Data {
   page: number;
@@ -52,11 +53,22 @@ const TableData = ({
 );
 
 const RecordsTable = () => {
-  const { isModalOpen, openModal, closeModal } = useModal();
+  const {
+    isModalOpen: isRemovalWarningModalOpen,
+    openModal: openRemovalWarningModal,
+    closeModal: closeRemovalWarningModalOpen,
+  } = useModal();
+
+  const {
+    isModalOpen: isEditModalOpen,
+    openModal: openEditModal,
+    closeModal: closeEditModalOpen,
+  } = useModal();
   const [pageNumber, setPageNumber] = useState(1);
   const [removalModalRecordId, setRemovalModalRecordId] = useState<
     string | null
   >(null);
+
   const perPage = 15;
 
   const { data, error, isLoading } = useQuery<Data>({
@@ -83,24 +95,32 @@ const RecordsTable = () => {
   };
 
   const onShowRemoveWarningModal = ({ id }: { id: string }) => {
-    openModal();
+    openRemovalWarningModal();
     setRemovalModalRecordId(id);
   };
 
   const onHideRemoveWarningModal = () => {
-    closeModal();
+    closeRemovalWarningModalOpen();
     setRemovalModalRecordId(null);
   };
 
   return (
     <>
       <Modal
-        isOpen={isModalOpen}
-        onClose={onHideRemoveWarningModal}
-        isSmall
-        title="Remove record"
+        isOpen={isRemovalWarningModalOpen || isEditModalOpen}
+        onClose={
+          isRemovalWarningModalOpen
+            ? onHideRemoveWarningModal
+            : closeEditModalOpen
+        }
+        isSmall={isRemovalWarningModalOpen}
+        title={isRemovalWarningModalOpen ? 'Remove record' : 'Edit record'}
       >
-        <RemoveAccoutingRecordForm id={removalModalRecordId} />
+        {isRemovalWarningModalOpen ? (
+          <RemoveAccoutingRecordForm id={removalModalRecordId} />
+        ) : (
+          <p>Edit</p>
+        )}
       </Modal>
       <TableWrapper>
         <div className="overflow-x-auto rounded-t-lg">
@@ -138,6 +158,8 @@ const RecordsTable = () => {
                       <TableData>{amount}</TableData>
                       <TableData>{type}</TableData>
                       <TableData className="flex justify-center">
+                        <PencilIcon onClick={() => openEditModal()} />
+
                         <BinIcon
                           onClick={() => onShowRemoveWarningModal({ id })}
                         />
@@ -149,7 +171,7 @@ const RecordsTable = () => {
             ) : (
               <TableBody>
                 <tr>
-                  <TableData className="text-center" colSpan={7}>
+                  <TableData className="text-center" colSpan={8}>
                     This page is empty!
                   </TableData>
                 </tr>
@@ -164,7 +186,6 @@ const RecordsTable = () => {
               onClick={(e) => onPaginationButtonClickHandler(e, -1)}
               disabled={pageNumber === 1}
               isIcon
-              isLeftIcon
             >
               <IconLeft />
             </PaginationButton>

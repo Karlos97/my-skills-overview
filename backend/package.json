@@ -39,6 +39,7 @@
     "start": "node dist/app.js",
     "dev": "nodemon",
     "build": "tsc",
+    "seed": "ts-node prisma/seed.ts",
     "lint": "eslint 'src/**/*.{js,ts}'"
   }
 }
