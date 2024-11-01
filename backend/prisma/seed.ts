@@ -11,7 +11,7 @@ async function main() {
       {
         accountNumber: "1234567890",
         accountName: "Alice",
-        iban: "DE89370400440532013000",
+        iban: "DE893704004405320130001234567323",
         address: "123 Main St, Cityville",
         amount: 1000.0,
         type: BankTransferType.sending,
@@ -19,7 +19,7 @@ async function main() {
       {
         accountNumber: "0987654321",
         accountName: "Bob",
-        iban: "FR7630006000011234567890189",
+        iban: "FR893704004405320130001234567111",
         address: "456 Elm St, Townsville",
         amount: 1500.5,
         type: BankTransferType.receiving,

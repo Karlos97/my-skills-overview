@@ -10,6 +10,9 @@ import useModal from '@/helpers/hooks/useModal';
 import RemoveAccoutingRecordForm from '@organisms/RemoveAccoutingRecordForm/RemoveAccoutingRecordForm';
 import BinIcon from '@atoms/Icons/Bin';
 import PencilIcon from '@/components/atoms/Icons/Pencil';
+import AccountingForm, {
+  TransactionType,
+} from '../AccountingForm/AccountingForm';
 
 interface Data {
   page: number;
@@ -18,14 +21,14 @@ interface Data {
   searchId: string;
 }
 
-interface Record {
+export interface Record {
   id: string;
   accountNumber: string;
   accountName: string;
   iban: string;
   address: string;
   amount: number;
-  type: string;
+  type: TransactionType;
 }
 const TableHeader = ({ children }: { children: ReactNode }) => (
   <th className="whitespace-nowrap px-4 py-2 font-medium text-slate-800 text-left">
@@ -68,7 +71,9 @@ const RecordsTable = () => {
   const [removalModalRecordId, setRemovalModalRecordId] = useState<
     string | null
   >(null);
-
+  const [editModalRecordData, setEditModalRecordData] = useState<Record | null>(
+    null,
+  );
   const perPage = 15;
 
   const { data, error, isLoading } = useQuery<Data>({
@@ -104,22 +109,30 @@ const RecordsTable = () => {
     setRemovalModalRecordId(null);
   };
 
+  const onShowEditModal = (data: Record) => {
+    openEditModal();
+    setEditModalRecordData(data);
+  };
+
+  const onHideEditModal = () => {
+    closeEditModalOpen();
+    setEditModalRecordData(null);
+  };
+
   return (
     <>
       <Modal
         isOpen={isRemovalWarningModalOpen || isEditModalOpen}
         onClose={
-          isRemovalWarningModalOpen
-            ? onHideRemoveWarningModal
-            : closeEditModalOpen
+          isRemovalWarningModalOpen ? onHideRemoveWarningModal : onHideEditModal
         }
         isSmall={isRemovalWarningModalOpen}
         title={isRemovalWarningModalOpen ? 'Remove record' : 'Edit record'}
       >
-        {isRemovalWarningModalOpen ? (
-          <RemoveAccoutingRecordForm id={removalModalRecordId} />
+        {isEditModalOpen && editModalRecordData ? (
+          <AccountingForm formData={editModalRecordData} />
         ) : (
-          <p>Edit</p>
+          <RemoveAccoutingRecordForm id={removalModalRecordId} />
         )}
       </Modal>
       <TableWrapper>
@@ -158,7 +171,19 @@ const RecordsTable = () => {
                       <TableData>{amount}</TableData>
                       <TableData>{type}</TableData>
                       <TableData className="flex justify-center">
-                        <PencilIcon onClick={() => openEditModal()} />
+                        <PencilIcon
+                          onClick={() =>
+                            onShowEditModal({
+                              id,
+                              accountNumber,
+                              accountName,
+                              iban,
+                              address,
+                              amount,
+                              type,
+                            })
+                          }
+                        />
 
                         <BinIcon
                           onClick={() => onShowRemoveWarningModal({ id })}

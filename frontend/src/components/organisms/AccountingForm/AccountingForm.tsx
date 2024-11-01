@@ -7,8 +7,11 @@ import Button from '@atoms/Button/Button';
 import useErrorNotification from '@hooks/useErrorNotification';
 import ErrorNotification from '@atoms/ErrorNotification/ErrorNotification';
 import useAddAccountingRecord from '@/helpers/hooks/useAddAccountingRecord';
+import { useEffect } from 'react';
+import { Record } from '../RecordsTable/RecordsTable';
+import useEditAccountingRecord from '@/helpers/hooks/useEditAccountingRecord';
 
-enum TransactionType {
+export enum TransactionType {
   SENDING = 'sending',
   RECEIVING = 'receiving',
 }
@@ -36,13 +39,19 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-const AccountingForm = ({ isEdit = false }: { isEdit?: boolean }) => {
-  // eslint-disable-next-line no-console
-  console.log('🚀 ~ AccountingForm ~ isEdit:', isEdit);
+interface AccountingFormProps {
+  formData?: Record | null;
+}
+const AccountingForm = (props: AccountingFormProps) => {
   const { error, isErrorVisible, triggerError } = useErrorNotification();
+  const { formData } = props;
 
-  const mutation = useAddAccountingRecord({
+  const addRecordMutation = useAddAccountingRecord({
+    queryKey: ['records'],
+    triggerError,
+  });
+
+  const editRecordMutation = useEditAccountingRecord({
     queryKey: ['records'],
     triggerError,
   });
@@ -52,18 +61,35 @@ const AccountingForm = ({ isEdit = false }: { isEdit?: boolean }) => {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
   const onSubmit = async (data: FormData) => {
-    mutation.mutate(data);
-    reset();
+    if (formData) {
+      editRecordMutation.mutate({ ...data, id: formData.id });
+      reset();
+    } else {
+      addRecordMutation.mutate(data);
+      reset();
+    }
   };
 
   const formatTransactionType = (type: TransactionType) => {
     return type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
   };
+
+  useEffect(() => {
+    if (formData) {
+      setValue('accountNumber', formData.accountNumber);
+      setValue('accountName', formData.accountName);
+      setValue('address', formData.address);
+      setValue('amount', formData.amount);
+      setValue('iban', formData.iban);
+      setValue('type', formData.type);
+    }
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
@@ -102,7 +128,7 @@ const AccountingForm = ({ isEdit = false }: { isEdit?: boolean }) => {
         {...register('type')}
         error={errors.type}
       />
-      <Button type="submit">Add Record</Button>
+      <Button type="submit">{formData ? 'Edit Record' : 'Add Record'}</Button>
       {isErrorVisible && error && <ErrorNotification error={error} />}
     </form>
   );

@@ -131,6 +131,7 @@ export const updateAccountingInfo = async (req: Request, res: Response) => {
     const updatedRecord = await prisma.accountingRecord.update({
       where: { id },
       data: {
+        accountNumber: data.accountNumber,
         accountName: data.accountName,
         iban: data.iban,
         address: data.address,
