@@ -1,0 +1,59 @@
+{
+  "recordsTable": {
+    "header": "Records Table",
+    "loading": " Loading...",
+    "error": "Error: ",
+    "tableHeaders": {
+      "id": "Id",
+      "accountNumber": "Account Number",
+      "accountName": "Account Name",
+      "iban": "IBAN",
+      "address": "Address",
+      "amount": "Amount",
+      "type": "Type",
+      "action": "Action"
+    },
+    "noRecords": "This page is empty!",
+    "form": {
+      "modalFields": {
+        "accountNumber": "Account Number",
+        "accountName": "Account Name",
+        "iban": "IBAN",
+        "address": "Address",
+        "amount": "Amount",
+        "type": "Type",
+        "action": "Action",
+        "validationSchema": {
+          "accountNumberRequired": "Account Number is required",
+          "accountNumberDigits": "Account Number must contain only digits",
+          "accountNameRequired": "Account Name is required",
+          "ibanLength": "IBAN has to have 32 letters",
+          "ibanFormat": "IBAN must start with two capital letters followed by up to 30 alphanumeric characters",
+          "addressRequired": "Address is required",
+          "amountNumber": "Amount must be a number",
+          "amountPositive": "Amount must be greater than zero",
+          "typeRequired": "Type is required",
+          "typeSending": "Sending",
+          "typeReceiving": "Receiving",
+          "typeUnknown": "Unknown"
+        }
+      },
+      "addForm": {
+        "header": "Add record",
+        "button": "Add record"
+      },
+      "editForm": {
+        "header": "Edit record",
+        "button": "Edit record"
+      },
+      "removeForm": {
+        "header": "Remove record",
+        "confirmationHeader": "Are you sure you want to delete record?",
+        "button": "Remove Record"
+      }
+    }
+  },
+  "footer": {
+    "addRecordButton": "Add Record"
+  }
+}

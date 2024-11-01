@@ -1,0 +1,59 @@
+{
+  "recordsTable": {
+    "header": "Tablica wpisów",
+    "loading": "Ładowanie...",
+    "error": "Błąd: ",
+    "tableHeaders": {
+      "id": "Id",
+      "accountNumber": "Numer konta",
+      "accountName": "Nazwa konta",
+      "iban": "IBAN",
+      "address": "Adres",
+      "amount": "Kwota",
+      "type": "Typ",
+      "action": "Akcja"
+    },
+    "noRecords": "Tabela nie zawiera żadnych wpisów!",
+    "form": {
+      "modalFields": {
+        "accountNumber": "Numer konta",
+        "accountName": "Nazwa konta",
+        "iban": "IBAN",
+        "address": "Adres",
+        "amount": "Kwota",
+        "type": "Typ",
+        "action": "Akcja",
+        "validationSchema": {
+          "accountNumberRequired": "Numer konta jest wymagany",
+          "accountNumberDigits": "Numer konta musi zawierać tylko cyfry",
+          "accountNameRequired": "Nazwa konta jest wymagana",
+          "ibanLength": "IBAN musi mieć 32 znaki",
+          "ibanFormat": "IBAN musi zaczynać się od dwóch wielkich liter, a następnie 30 znaków alfanumerycznych",
+          "addressRequired": "Adres jest wymagany",
+          "amountNumber": "Kwota musi być liczbą",
+          "amountPositive": "Kwota musi być większa od zera",
+          "typeRequired": "Typ przelewu jest wymagany",
+          "typeSending": "Wysyłanie",
+          "typeReceiving": "Odbieranie",
+          "typeUnknown": "Nieznany"
+        }
+      },
+      "addForm": {
+        "header": "Dodaj wpis",
+        "button": "Dodaj wpis"
+      },
+      "editForm": {
+        "header": "Edytuj wpis",
+        "button": "Edytuj wpis"
+      },
+      "removeForm": {
+        "header": "Usuń wpis",
+        "confirmationHeader": "Czy na pewno chcesz usunąć ten wpis?",
+        "button": "Usuń wpis"
+      }
+    }
+  },
+  "footer": {
+    "addRecordButton": "Dodaj wpis"
+  }
+}

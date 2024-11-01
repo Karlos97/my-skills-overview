@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './App.tsx';
 import './index.scss';
 
+import './i18n/i18n.ts';
+
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
@@ -11,6 +13,5 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-    ,
   </StrictMode>,
 );

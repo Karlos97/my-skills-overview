@@ -10,9 +10,9 @@ import useModal from '@/helpers/hooks/useModal';
 import RemoveAccoutingRecordForm from '@organisms/RemoveAccoutingRecordForm/RemoveAccoutingRecordForm';
 import BinIcon from '@atoms/Icons/Bin';
 import PencilIcon from '@/components/atoms/Icons/Pencil';
-import AccountingForm, {
-  TransactionType,
-} from '../AccountingForm/AccountingForm';
+import AccountingForm from '../AccountingForm/AccountingForm';
+import { useTranslation } from 'react-i18next';
+import { TransactionType } from '../AccountingForm/formSchema';
 
 interface Data {
   page: number;
@@ -56,6 +56,7 @@ const TableData = ({
 );
 
 const RecordsTable = () => {
+  const { t } = useTranslation();
   const {
     isModalOpen: isRemovalWarningModalOpen,
     openModal: openRemovalWarningModal,
@@ -83,11 +84,17 @@ const RecordsTable = () => {
   });
 
   if (isLoading) {
-    return <div className="flex justify-center">Loading...</div>;
+    return (
+      <div className="flex justify-center">{t('recordsTable.loading')}</div>
+    );
   }
 
   if (error instanceof Error) {
-    return <div className="flex justify-center">Error: {error.message}</div>;
+    return (
+      <div className="flex justify-center">
+        {`${t('recordsTable.error')} ${error.message}`}
+      </div>
+    );
   }
 
   const onPaginationButtonClickHandler = (
@@ -127,7 +134,11 @@ const RecordsTable = () => {
           isRemovalWarningModalOpen ? onHideRemoveWarningModal : onHideEditModal
         }
         isSmall={isRemovalWarningModalOpen}
-        title={isRemovalWarningModalOpen ? 'Remove record' : 'Edit record'}
+        title={
+          isRemovalWarningModalOpen
+            ? t('recordsTable.form.removeForm.header')
+            : t('recordsTable.form.editForm.header')
+        }
       >
         {isEditModalOpen && editModalRecordData ? (
           <AccountingForm formData={editModalRecordData} />
@@ -140,14 +151,24 @@ const RecordsTable = () => {
           <Table>
             <thead>
               <tr>
-                <TableHeader>Id</TableHeader>
-                <TableHeader>Account Number</TableHeader>
-                <TableHeader>Account Name</TableHeader>
-                <TableHeader>IBAN</TableHeader>
-                <TableHeader>Address</TableHeader>
-                <TableHeader>Amount</TableHeader>
-                <TableHeader>Type</TableHeader>
-                <TableHeader>Action</TableHeader>
+                <TableHeader>{t('recordsTable.tableHeaders.id')}</TableHeader>
+                <TableHeader>
+                  {t('recordsTable.tableHeaders.accountNumber')}
+                </TableHeader>
+                <TableHeader>
+                  {t('recordsTable.tableHeaders.accountName')}
+                </TableHeader>
+                <TableHeader>{t('recordsTable.tableHeaders.iban')}</TableHeader>
+                <TableHeader>
+                  {t('recordsTable.tableHeaders.address')}
+                </TableHeader>
+                <TableHeader>
+                  {t('recordsTable.tableHeaders.amount')}
+                </TableHeader>
+                <TableHeader>{t('recordsTable.tableHeaders.type')}</TableHeader>
+                <TableHeader>
+                  {t('recordsTable.tableHeaders.action')}
+                </TableHeader>
               </tr>
             </thead>
             {data?.records?.length ? (
@@ -169,7 +190,19 @@ const RecordsTable = () => {
                       <TableData>{iban}</TableData>
                       <TableData>{address}</TableData>
                       <TableData>{amount}</TableData>
-                      <TableData>{type}</TableData>
+                      <TableData>
+                        {type === TransactionType.SENDING
+                          ? t(
+                              'recordsTable.form.modalFields.validationSchema.typeSending',
+                            )
+                          : type === TransactionType.RECEIVING
+                            ? t(
+                                'recordsTable.form.modalFields.validationSchema.typeReceiving',
+                              )
+                            : t(
+                                'recordsTable.form.modalFields.validationSchema.typeUnknown',
+                              )}
+                      </TableData>
                       <TableData className="flex justify-center">
                         <PencilIcon
                           onClick={() =>
@@ -197,7 +230,7 @@ const RecordsTable = () => {
               <TableBody>
                 <tr>
                   <TableData className="text-center" colSpan={8}>
-                    This page is empty!
+                    {t('recordsTable.noRecords')}
                   </TableData>
                 </tr>
               </TableBody>

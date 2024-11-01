@@ -5,9 +5,11 @@ import Footer from '@organisms/Footer/Footer';
 import Modal from '@organisms/Modal/Modal';
 import Button from '@atoms/Button/Button';
 import useModal from '@/helpers/hooks/useModal';
+import { useTranslation } from 'react-i18next';
 
 const Page = ({ children }: { children: ReactNode }) => {
   const { isModalOpen, openModal, closeModal } = useModal();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -22,7 +24,7 @@ const Page = ({ children }: { children: ReactNode }) => {
             className="px-8 py-2 rounded bg-blue-500 dark:bg-gray-600 text-white dark:text-white"
             onClick={openModal}
           >
-            Add record
+            {t('footer.addRecordButton')}
           </Button>
         </Footer>
       </div>

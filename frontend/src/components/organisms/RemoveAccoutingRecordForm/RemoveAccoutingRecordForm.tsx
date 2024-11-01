@@ -2,9 +2,11 @@ import Button from '@atoms/Button/Button';
 import useErrorNotification from '@hooks/useErrorNotification';
 import ErrorNotification from '@atoms/ErrorNotification/ErrorNotification';
 import { useDeleteRecord } from '@/helpers/hooks/useDeleteRecord';
+import { useTranslation } from 'react-i18next';
 
 const RemoveAccoutingRecordForm = ({ id }: { id: string | null }) => {
   const { error, isErrorVisible, triggerError } = useErrorNotification();
+  const { t } = useTranslation();
 
   const mutation = useDeleteRecord({
     queryKey: ['records'],
@@ -22,12 +24,14 @@ const RemoveAccoutingRecordForm = ({ id }: { id: string | null }) => {
 
   return (
     <>
-      <p className="mb-12 text-sm">Are you sure you want to delete record?</p>
+      <p className="mb-12 text-sm">
+        {t('recordsTable.form.removeForm.confirmationHeader')}
+      </p>
       <Button
         onClick={onClickHandler}
         className="bg-red-500 hover:bg-red-700 mt-auto"
       >
-        Remove Record
+        {t('recordsTable.form.removeForm.button')}
       </Button>
       {isErrorVisible && error && <ErrorNotification error={error} />}
     </>

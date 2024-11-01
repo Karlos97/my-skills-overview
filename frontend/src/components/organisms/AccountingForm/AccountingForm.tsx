@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import Input from '@atoms/Input/Input';
 import Select from '@atoms/Select/Select';
 import Button from '@atoms/Button/Button';
@@ -10,40 +9,15 @@ import useAddAccountingRecord from '@/helpers/hooks/useAddAccountingRecord';
 import { useEffect } from 'react';
 import { Record } from '../RecordsTable/RecordsTable';
 import useEditAccountingRecord from '@/helpers/hooks/useEditAccountingRecord';
+import { useTranslation } from 'react-i18next';
+import { FormData, formSchema, TransactionType } from './formSchema';
 
-export enum TransactionType {
-  SENDING = 'sending',
-  RECEIVING = 'receiving',
-}
-
-const formSchema = z.object({
-  accountNumber: z
-    .string()
-    .min(1, 'Account Number is required')
-    .regex(/^\d+$/, 'Account Number must contain only digits'),
-  accountName: z.string().min(1, 'Account Name is required'),
-  iban: z
-    .string()
-    .min(32, 'IBAN has to have 32 letters')
-    .regex(
-      /^[A-Z]{2}[A-Z0-9]{1,30}$/,
-      'IBAN must start with two capital letters followed by up to 30 alphanumeric characters',
-    ),
-  address: z.string().min(1, 'Address is required'),
-  amount: z
-    .number({ invalid_type_error: 'Amount must be a number' })
-    .positive('Amount must be greater than zero'),
-  type: z.enum([TransactionType.SENDING, TransactionType.RECEIVING], {
-    errorMap: () => ({ message: 'Type is required' }),
-  }),
-});
-
-type FormData = z.infer<typeof formSchema>;
 interface AccountingFormProps {
   formData?: Record | null;
 }
 const AccountingForm = (props: AccountingFormProps) => {
   const { error, isErrorVisible, triggerError } = useErrorNotification();
+  const { t } = useTranslation();
   const { formData } = props;
 
   const addRecordMutation = useAddAccountingRecord({
@@ -76,7 +50,7 @@ const AccountingForm = (props: AccountingFormProps) => {
     }
   };
 
-  const formatTransactionType = (type: TransactionType) => {
+  const formatTransactionType = (type: string) => {
     return type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
   };
 
@@ -94,41 +68,57 @@ const AccountingForm = (props: AccountingFormProps) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
       <Input
-        label="Account Number"
+        label={t('recordsTable.form.modalFields.accountNumber')}
         type="number"
         {...register('accountNumber')}
         error={errors.accountNumber}
       />
       <Input
-        label="Account Name"
+        label={t('recordsTable.form.modalFields.accountName')}
         {...register('accountName')}
         error={errors.accountName}
       />
-      <Input label="IBAN" {...register('iban')} error={errors.iban} />
-      <Input label="Address" {...register('address')} error={errors.address} />
       <Input
-        label="Amount"
+        label={t('recordsTable.form.modalFields.iban')}
+        {...register('iban')}
+        error={errors.iban}
+      />
+      <Input
+        label={t('recordsTable.form.modalFields.address')}
+        {...register('address')}
+        error={errors.address}
+      />
+      <Input
+        label={t('recordsTable.form.modalFields.amount')}
         type="number"
         step="any"
         {...register('amount', { valueAsNumber: true })}
         error={errors.amount}
       />
       <Select
-        label="Type"
+        label={t('recordsTable.form.modalFields.type')}
         options={[
           {
-            value: TransactionType.SENDING,
-            label: formatTransactionType(TransactionType.SENDING),
+            value: t(TransactionType.SENDING),
+            label: formatTransactionType(
+              t('recordsTable.form.modalFields.validationSchema.typeSending'),
+            ),
           },
           {
-            value: TransactionType.RECEIVING,
-            label: formatTransactionType(TransactionType.RECEIVING),
+            value: t(TransactionType.RECEIVING),
+            label: formatTransactionType(
+              t('recordsTable.form.modalFields.validationSchema.typeReceiving'),
+            ),
           },
         ]}
         {...register('type')}
         error={errors.type}
       />
-      <Button type="submit">{formData ? 'Edit Record' : 'Add Record'}</Button>
+      <Button type="submit">
+        {formData
+          ? t('recordsTable.form.editForm.button')
+          : t('recordsTable.form.addForm.button')}
+      </Button>
       {isErrorVisible && error && <ErrorNotification error={error} />}
     </form>
   );

@@ -10,6 +10,7 @@ const config: Config.InitialOptions = {
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@i18n/(.*)$': '<rootDir>/src/i18n/$1',
     '^@atoms/(.*)$': '<rootDir>/src/components/atoms/$1',
     '^@organisms/(.*)$': '<rootDir>/src/components/organisms/$1',
     '^@templates/(.*)$': '<rootDir>/src/components/templates/$1',

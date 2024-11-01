@@ -17,11 +17,13 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
+    "resolveJsonModule": true,
 
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
+      "@i18n/*": ["src/i18n/*"],
       "@atoms/*": ["src/components/atoms/*"],
       "@organisms/*": ["src/components/organisms/*"],
       "@templates/*": ["src/components/templates/*"],
