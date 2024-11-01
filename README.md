@@ -59,6 +59,12 @@ To fix the issue, run the following command: `rm ~/.docker/config.json`
 
 Source: [Stackoverflow](https://stackoverflow.com/questions/66912085/why-is-docker-compose-failing-with-error-internal-load-metadata-suddenly)
 
+**Ts-node** was added as a dependency instead of dev dependency. The reason was that it was breaking production build and inside the docker `yarn build` script was not working. The reason to that is broken development / production environment.\
+**More info:**
+
+- [Build:Cannot find type definition file for 'node'](https://stackoverflow.com/questions/43542710/buildcannot-find-type-definition-file-for-node)
+- [How to compile typescript in Dockerfile](https://stackoverflow.com/questions/51083134/how-to-compile-typescript-in-dockerfile)
+
 # Comments
 
 ### Private Hosting #bragging

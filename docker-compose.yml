@@ -1,35 +1,35 @@
 version: "3.8"
 
 services:
-  #  COMMENT FRONTEND AND BACKEND FOR LOCAL DEVELOPMENT!
-  frontend:
-    build:
-      context: .
-      dockerfile: frontend/Dockerfile
-    environment:
-      - VITE_BACKEND_LINK
-    ports:
-      - "4173:4173"
-    depends_on:
-      - backend
-    restart: always
+  # #  COMMENT FRONTEND AND BACKEND FOR LOCAL DEVELOPMENT!
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: frontend/Dockerfile
+  #     args:
+  #       - VITE_BACKEND_LINK
+  #   ports:
+  #     - "4173:4173"
+  #   depends_on:
+  #     - backend
+  #   restart: always
 
-  backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    environment:
-      - PORT
-      - NODE_ENV
-      - REDIS_URL
-      - DATABASE_URL
-    ports:
-      - "3000:3000"
-    restart: always
-    networks:
-      - communication-network
-    depends_on:
-      - postgres
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: backend/Dockerfile
+  #     args:
+  #       DATABASE_URL: ${DATABASE_URL}
+  #       PORT: ${PORT}
+  #       NODE_ENV: ${NODE_ENV}
+  #       REDIS_URL: ${REDIS_URL}
+  #   ports:
+  #     - "3000:3000"
+  #   restart: always
+  #   networks:
+  #     - communication-network
+  #   depends_on:
+  #     - postgres
 
   postgres:
     image: postgres:15
