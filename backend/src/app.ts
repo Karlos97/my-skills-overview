@@ -9,10 +9,7 @@ import accountingRoutes from "./routes/accountingRoutes";
 import { connectRedis } from "./config/redisSetup";
 
 const corsOptions = {
-  origin:
-    process.env.NODE_ENV === "production"
-      ? "http://localhost:4173"
-      : "http://localhost:5173", // frontend prod/dev
+  origin: `http://localhost:${process.env.VITE_FRONTEND_PORT ?? "4173"}`,
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
 };
@@ -51,12 +48,12 @@ if (process.env.NODE_ENV !== "production") {
   app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 }
 
-const PORT = process.env.PORT || 3000;
+const BACKEND_PORT = process.env.BACKEND_PORT || 3000;
 
 const startServer = async () => {
   try {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+    app.listen(BACKEND_PORT, () => {
+      console.log(`Server is running on port ${BACKEND_PORT}`);
     });
   } catch (error) {
     console.error("Failed to connect to immudb:", error);

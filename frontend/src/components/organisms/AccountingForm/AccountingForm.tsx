@@ -14,20 +14,23 @@ import { FormData, formSchema, TransactionType } from './formSchema';
 
 interface AccountingFormProps {
   formData?: Record | null;
+  onClose?: () => void;
 }
 const AccountingForm = (props: AccountingFormProps) => {
   const { error, isErrorVisible, triggerError } = useErrorNotification();
   const { t } = useTranslation();
-  const { formData } = props;
+  const { formData, onClose } = props;
 
   const addRecordMutation = useAddAccountingRecord({
     queryKey: ['records'],
     triggerError,
+    onSuccess: () => onClose?.(),
   });
 
   const editRecordMutation = useEditAccountingRecord({
     queryKey: ['records'],
     triggerError,
+    onSuccess: () => onClose?.(),
   });
 
   const {
@@ -48,6 +51,7 @@ const AccountingForm = (props: AccountingFormProps) => {
       addRecordMutation.mutate(data);
       reset();
     }
+    onClose?.();
   };
 
   const formatTransactionType = (type: string) => {

@@ -5,7 +5,7 @@
 
 ########### FRONTEND ###########
 
-./backend/yarn.lock
+./frontend/yarn.lock
 ./frontend/node_modules
 ./frontend/dist
 

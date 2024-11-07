@@ -1,37 +1,61 @@
 version: "3.8"
 
 services:
-  #  COMMENT FRONTEND AND BACKEND FOR LOCAL DEVELOPMENT!
+  # # #  COMMENT HTTPS-PORTAL, FRONTEND AND BACKEND FOR LOCAL DEVELOPMENT!
+  # https-portal:
+  #   image: steveltn/https-portal:1
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   links:
+  #     - backend
+  #     - frontend
+  #   environment:
+  #     DOMAINS: "portfolio.karlos97.pl -> http://frontend:${VITE_FRONTEND_PORT}, portfolio-api.karlos97.pl -> http://backend:${BACKEND_PORT}"
+  #     # STAGE: "production"
+  #     CLIENT_MAX_BODY_SIZE: 25M
+  #     # FORCE_RENEW: "true"
+  #   volumes:
+  #     - https-portal-data:/var/lib/https-portal
+
   frontend:
+    container_name: frontend
     build:
       context: .
       dockerfile: frontend/Dockerfile
       args:
         - VITE_BACKEND_LINK
+        - VITE_FRONTEND_PORT
     ports:
-      - "4173:4173"
+      - "${VITE_FRONTEND_PORT}:${VITE_FRONTEND_PORT}"
     depends_on:
       - backend
     restart: always
 
   backend:
+    container_name: backend
     build:
       context: .
       dockerfile: backend/Dockerfile
       args:
         DATABASE_URL: ${DATABASE_URL}
-        PORT: ${PORT}
+        BACKEND_PORT: ${BACKEND_PORT}
         NODE_ENV: ${NODE_ENV}
         REDIS_URL: ${REDIS_URL}
+        VITE_FRONTEND_PORT: ${VITE_FRONTEND_PORT}
     ports:
-      - "3000:3000"
-    restart: always
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    # volumes:
+    #   - "./dockerData/backend_data/logs.json:/backend/logs.json"
     networks:
       - communication-network
     depends_on:
       - postgres
+      - redis-container
 
   postgres:
+    container_name: postgres
     image: postgres:15
     environment:
       - POSTGRES_USER
@@ -45,6 +69,7 @@ services:
       - communication-network
 
   redis-container:
+    container_name: redis-container
     image: redis:latest
     ports:
       - "6379:6379"
@@ -53,6 +78,7 @@ services:
 
 volumes:
   postgres_data:
+  https-portal-data: # Recommended, to avoid re-signing when upgrading HTTPS-PORTAL
 
 networks:
   communication-network:

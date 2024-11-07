@@ -4,11 +4,13 @@ import { backendLink } from '../constans';
 interface UseFetchAccountingRecords {
   queryKey: string[];
   triggerError: (message: string) => void;
+  onSuccess?: () => void;
 }
 
 export const useDeleteRecord = ({
   queryKey,
   triggerError,
+  onSuccess,
 }: UseFetchAccountingRecords) => {
   const queryClient = useQueryClient();
 
@@ -36,6 +38,7 @@ export const useDeleteRecord = ({
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
+      onSuccess?.();
     },
     onError: (error: Error) => {
       triggerError(

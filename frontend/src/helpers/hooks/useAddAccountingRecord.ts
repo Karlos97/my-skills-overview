@@ -8,11 +8,13 @@ import { backendLink } from '@helpers/constans';
 interface UseAddAccountingRecord {
   queryKey: string[];
   triggerError: (message: string) => void;
+  onSuccess?: () => void;
 }
 
 const useAddAccountingRecord = ({
   queryKey,
   triggerError,
+  onSuccess,
 }: UseAddAccountingRecord): UseMutationResult => {
   const queryClient = useQueryClient();
 
@@ -40,6 +42,7 @@ const useAddAccountingRecord = ({
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey });
+      onSuccess?.();
     },
     onError: (error: Error) => {
       triggerError(

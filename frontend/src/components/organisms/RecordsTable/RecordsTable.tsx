@@ -141,9 +141,15 @@ const RecordsTable = () => {
         }
       >
         {isEditModalOpen && editModalRecordData ? (
-          <AccountingForm formData={editModalRecordData} />
+          <AccountingForm
+            formData={editModalRecordData}
+            onClose={onHideEditModal}
+          />
         ) : (
-          <RemoveAccoutingRecordForm id={removalModalRecordId} />
+          <RemoveAccoutingRecordForm
+            id={removalModalRecordId}
+            onClose={onHideRemoveWarningModal}
+          />
         )}
       </Modal>
       <TableWrapper>

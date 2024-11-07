@@ -4,13 +4,22 @@ import ErrorNotification from '@atoms/ErrorNotification/ErrorNotification';
 import { useDeleteRecord } from '@/helpers/hooks/useDeleteRecord';
 import { useTranslation } from 'react-i18next';
 
-const RemoveAccoutingRecordForm = ({ id }: { id: string | null }) => {
+interface RemoveAccoutingRecordFormProps {
+  id: string | null;
+  onClose?: () => void;
+}
+
+const RemoveAccoutingRecordForm = ({
+  id,
+  onClose,
+}: RemoveAccoutingRecordFormProps) => {
   const { error, isErrorVisible, triggerError } = useErrorNotification();
   const { t } = useTranslation();
 
   const mutation = useDeleteRecord({
     queryKey: ['records'],
     triggerError,
+    onSuccess: () => onClose?.(),
   });
 
   const onClickHandler = async () => {
@@ -18,7 +27,6 @@ const RemoveAccoutingRecordForm = ({ id }: { id: string | null }) => {
       triggerError(`Error: removing item id cannot be null.`);
       return;
     }
-
     mutation.mutate(id);
   };
 

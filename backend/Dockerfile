@@ -1,14 +1,17 @@
+FROM postgres
 FROM node:20.9-alpine
 
 WORKDIR /backend
 
+ARG VITE_FRONTEND_PORT
 ARG DATABASE_URL
-ARG PORT
+ARG BACKEND_PORT
 ARG NODE_ENV
 ARG REDIS_URL
 
+ENV VITE_FRONTEND_PORT=${VITE_FRONTEND_PORT}
 ENV DATABASE_URL=${DATABASE_URL}
-ENV PORT=${PORT}
+ENV BACKEND_PORT=${BACKEND_PORT}
 ENV NODE_ENV=${NODE_ENV}
 ENV REDIS_URL=${REDIS_URL}
 
@@ -18,13 +21,10 @@ RUN yarn install
 
 COPY backend/ .
 
-RUN printenv
 RUN yarn prisma generate
-# RUN yarn prisma migrate deploy 
 
 RUN yarn build
 
-EXPOSE 3000
+EXPOSE ${BACKEND_PORT}
 
-CMD ["sh", "-c", "yarn prisma migrate deploy && yarn start"]
-# CMD ["yarn", "start"]
+CMD ["yarn", "start"]

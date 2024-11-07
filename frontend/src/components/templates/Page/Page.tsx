@@ -14,7 +14,7 @@ const Page = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Add record">
-        <AccountingForm />
+        <AccountingForm onClose={closeModal} />
       </Modal>
       <div className="h-full w-full flex flex-col bg-gray-50 dark:bg-gray-800 px-4 md:px-16 lg:-x-32">
         <Header />
