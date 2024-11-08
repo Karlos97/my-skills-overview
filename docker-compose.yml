@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   # # #  COMMENT HTTPS-PORTAL, FRONTEND AND BACKEND FOR LOCAL DEVELOPMENT!
   # https-portal:
@@ -41,6 +39,7 @@ services:
       args:
         DATABASE_URL: ${DATABASE_URL}
         BACKEND_PORT: ${BACKEND_PORT}
+        FRONTEND_LINK: ${FRONTEND_LINK}
         NODE_ENV: ${NODE_ENV}
         REDIS_URL: ${REDIS_URL}
         VITE_FRONTEND_PORT: ${VITE_FRONTEND_PORT}
@@ -48,8 +47,6 @@ services:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
     # volumes:
     #   - "./dockerData/backend_data/logs.json:/backend/logs.json"
-    networks:
-      - communication-network
     depends_on:
       - postgres
       - redis-container
@@ -65,21 +62,13 @@ services:
       - "5432:5432"
     volumes:
       - ./dockerData/postgres_data:/var/lib/postgresql/data
-    networks:
-      - communication-network
 
   redis-container:
     container_name: redis-container
     image: redis:latest
     ports:
       - "6379:6379"
-    networks:
-      - communication-network
 
 volumes:
   postgres_data:
   https-portal-data: # Recommended, to avoid re-signing when upgrading HTTPS-PORTAL
-
-networks:
-  communication-network:
-    driver: bridge

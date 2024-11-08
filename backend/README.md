@@ -21,7 +21,6 @@ Local development setup is described here. The production setup is detailed in t
 - Run `yarn install` to install dependencies.
 - Update the `.env` file with:
   - `NODE_ENV`: set to `development` or `production`, depending on the environment
-  - `VITE_FRONTEND_PORT`: port of the frontend app
   - `REDIS_URL`: the Redis URL
   - `POSTGRES_USER`: postgreSQL user name
   - `POSTGRES_PASSWORD`: postgreSQL user password

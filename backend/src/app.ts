@@ -9,10 +9,14 @@ import accountingRoutes from "./routes/accountingRoutes";
 import { connectRedis } from "./config/redisSetup";
 
 const corsOptions = {
-  origin: `http://localhost:${process.env.VITE_FRONTEND_PORT ?? "4173"}`,
+  origin: process.env.FRONTEND_LINK ?? "http://localhost:4173",
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
 };
+console.log(
+  "🚀 ~ corsOptions.process.env.FRONTEND_LINK:",
+  process.env.FRONTEND_LINK
+);
 
 const app = express();
 
