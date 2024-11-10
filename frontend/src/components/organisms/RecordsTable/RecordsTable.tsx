@@ -13,6 +13,7 @@ import PencilIcon from '@/components/atoms/Icons/Pencil';
 import AccountingForm from '../AccountingForm/AccountingForm';
 import { useTranslation } from 'react-i18next';
 import { TransactionType } from '../AccountingForm/formSchema';
+import { useSearchParams } from 'react-router-dom';
 
 interface Data {
   page: number;
@@ -68,19 +69,27 @@ const RecordsTable = () => {
     openModal: openEditModal,
     closeModal: closeEditModalOpen,
   } = useModal();
-  const [pageNumber, setPageNumber] = useState(1);
+  const [searchParams] = useSearchParams();
+  const searchParamsPage = parseInt(searchParams.get('page') ?? '1');
+  const searchParamsRecordsPerPage = parseInt(
+    searchParams.get('recordsPerPage') ?? '1',
+  );
+  const page = searchParamsPage > 0 ? searchParamsPage : 1;
+  const recordsPerPage =
+    searchParamsRecordsPerPage > 0 ? searchParamsRecordsPerPage : 15;
+  const [pageNumber, setPageNumber] = useState(page);
   const [removalModalRecordId, setRemovalModalRecordId] = useState<
     string | null
   >(null);
   const [editModalRecordData, setEditModalRecordData] = useState<Record | null>(
     null,
   );
-  const perPage = 15;
 
   const { data, error, isLoading } = useQuery<Data>({
-    queryKey: ['records', pageNumber, perPage],
-    queryFn: () => fetchBankRecords({ page: pageNumber, perPage }),
-    enabled: !!pageNumber && !!perPage,
+    queryKey: ['records', pageNumber, recordsPerPage],
+    queryFn: () =>
+      fetchBankRecords({ page: pageNumber, perPage: recordsPerPage }),
+    enabled: !!pageNumber && !!recordsPerPage,
   });
 
   if (isLoading) {
@@ -257,7 +266,7 @@ const RecordsTable = () => {
 
             <PaginationButton
               onClick={(e) => onPaginationButtonClickHandler(e, 1)}
-              disabled={(data?.records?.length || 0) < perPage}
+              disabled={(data?.records?.length || 0) < recordsPerPage}
               isIcon
             >
               <IconRight />
