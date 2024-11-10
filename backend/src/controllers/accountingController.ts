@@ -33,7 +33,7 @@ interface RemoveRecord {
 
 interface ResponseData {
   page: number;
-  perPage: number;
+  recordsPerPage: number;
   records: Record[];
 }
 
@@ -42,7 +42,7 @@ export const getAccountingInfo = async (req: Request, res: Response) => {
     const bodyData = getAccountingSchema.parse(req.query);
 
     const cachedRecord = await redisClient.get(
-      `getAccountingInfo&recordPage:${bodyData.page}&recordPerPage:${bodyData.perPage}`
+      `getAccountingInfo&recordPage:${bodyData.page}&recordPerPage:${bodyData.recordsPerPage}`
     );
 
     // Get cache only for production
@@ -54,19 +54,19 @@ export const getAccountingInfo = async (req: Request, res: Response) => {
     }
 
     const accountingRecords = await prisma.accountingRecord.findMany({
-      skip: (bodyData.page - 1) * bodyData.perPage,
-      take: bodyData.perPage,
+      skip: (bodyData.page - 1) * bodyData.recordsPerPage,
+      take: bodyData.recordsPerPage,
     });
 
     const responseData: ResponseData = {
       page: bodyData.page,
-      perPage: bodyData.perPage,
+      recordsPerPage: bodyData.recordsPerPage,
       records: accountingRecords,
     };
     // Cache date only on production
     if (process.env.NODE_ENV === "production") {
       await redisClient.setEx(
-        `recordPage:${bodyData.page}&recordPerPage:${bodyData.perPage}`,
+        `recordPage:${bodyData.page}&recordPerPage:${bodyData.recordsPerPage}`,
         3600,
         JSON.stringify(responseData)
       );

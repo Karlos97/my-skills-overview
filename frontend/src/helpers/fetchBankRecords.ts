@@ -2,13 +2,13 @@ import { backendLink } from '@helpers/constans';
 
 export const fetchBankRecords = async ({
   page,
-  perPage,
+  recordsPerPage,
 }: {
   page: number;
-  perPage: number;
+  recordsPerPage: number;
 }) => {
   const response = await fetch(
-    `${backendLink}/api/accounting?page=${page}&perPage=${perPage}`,
+    `${backendLink}/api/accounting?page=${page}&recordsPerPage=${recordsPerPage}`,
   );
 
   if (!response.ok) {

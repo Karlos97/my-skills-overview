@@ -10,7 +10,7 @@ export const getAccountingSchema = z.object({
     (val) => Number(val),
     z.number().min(1).positive("Amount must be a positive number")
   ),
-  perPage: z.preprocess(
+  recordsPerPage: z.preprocess(
     (val) => Number(val),
     z.number().min(1).positive("Amount must be a positive number")
   ),

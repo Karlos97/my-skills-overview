@@ -24,12 +24,12 @@ const accountingRoutes = Router();
  *               page:
  *                 type: number
  *                 description: Page number
- *               perPage:
+ *               recordsPerPage:
  *                 type: number
  *                 description: Elements per page
  *             required:
  *               - page
- *               - perPage
+ *               - recordsPerPage
  *     responses:
  *       201:
  *         description: Accounting information successfully fetched

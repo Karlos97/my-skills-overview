@@ -17,7 +17,7 @@ import { useSearchParams } from 'react-router-dom';
 
 interface Data {
   page: number;
-  perPage: number;
+  recordsPerPage: number;
   records: Record[];
   searchId: string;
 }
@@ -88,7 +88,7 @@ const RecordsTable = () => {
   const { data, error, isLoading } = useQuery<Data>({
     queryKey: ['records', pageNumber, recordsPerPage],
     queryFn: () =>
-      fetchBankRecords({ page: pageNumber, perPage: recordsPerPage }),
+      fetchBankRecords({ page: pageNumber, recordsPerPage: recordsPerPage }),
     enabled: !!pageNumber && !!recordsPerPage,
   });
 
