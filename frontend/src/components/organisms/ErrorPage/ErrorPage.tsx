@@ -15,7 +15,7 @@ const ErrorPage = () => {
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-4">
-      <div className="max-w-md text-center space-y-6 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+      <div className="max-w-md text-center space-y-6 p-6 bg-custom-beige dark:custom-navy rounded-lg shadow-lg">
         <h1 className="text-4xl font-bold text-red-500">Oops!</h1>
         <p className="text-lg">Sorry, an unexpected error has occurred.</p>
         <p className="text-sm text-gray-500 dark:text-gray-400">

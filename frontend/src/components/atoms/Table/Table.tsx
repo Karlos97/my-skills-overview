@@ -19,7 +19,7 @@ export const TableHeader = ({ children }: { children: ReactNode }) => (
 );
 
 export const Table = ({ children }: { children: ReactNode }) => (
-  <table className="min-w-full divide-y-2 text-sm bg-gray-50 dark:bg-gray-400 divide-gray-200 dark:divide-gray-500">
+  <table className="min-w-full divide-y-2 text-sm bg-custom-beige dark:bg-gray-400 divide-gray-200 dark:divide-gray-500">
     {children}
   </table>
 );
@@ -31,7 +31,7 @@ export const TableBody = ({ children }: { children: ReactNode }) => (
 );
 
 export const TableRow = ({ children }: { children: ReactNode }) => (
-  <tr className="bg-gray-50 dark:bg-gray-400 hover:bg-gray-200 dark:hover:bg-gray-500 ">
+  <tr className="bg-custom-beige dark:bg-gray-400 hover:bg-gray-200 dark:hover:bg-custom-beige0 ">
     {children}
   </tr>
 );

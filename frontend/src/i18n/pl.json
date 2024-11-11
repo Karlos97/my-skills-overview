@@ -1,4 +1,8 @@
 {
+  "header": {
+    "home": "Strona Główna",
+    "exampleApp": "Przykładowa Aplikacja"
+  },
   "recordsTable": {
     "header": "Tablica wpisów",
     "loading": "Ładowanie...",

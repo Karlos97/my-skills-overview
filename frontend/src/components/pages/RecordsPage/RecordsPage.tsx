@@ -21,7 +21,7 @@ const RecordsPage = () => {
 
         <RecordsTable />
 
-        <div className="flex justify-end items-end">
+        <div className="flex justify-end items-end mt-4">
           <Button
             className="px-8 py-2 rounded bg-blue-500 dark:bg-gray-600 text-white dark:text-white"
             onClick={openModal}

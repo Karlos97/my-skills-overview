@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RecordsPage from './components/pages/RecordsPage/RecordsPage.tsx';
 import Page from './components/templates/Page/Page.tsx';
 import ErrorPage from './components/organisms/ErrorPage/ErrorPage.tsx';
+import HomePage from './components/pages/HomePage/HomePage.tsx';
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <div> About page!</div>,
+        element: <HomePage />,
       },
       {
         path: 'simple-app',

@@ -19,7 +19,7 @@ const PaginationButton = ({
   <li
     className={`  ${
       isActive
-        ? 'block size-8 rounded border-blue-600 bg-blue-600 dark:border-gray-500 dark:bg-gray-500 text-center leading-8 text-white'
+        ? 'block size-8 rounded border-blue-600 bg-blue-600 dark:border-gray-500 dark:bg-custom-beige0 text-center leading-8 text-white'
         : ''
     } ${
       isIcon

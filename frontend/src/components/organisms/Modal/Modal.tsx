@@ -18,7 +18,7 @@ const Modal = ({ isOpen, onClose, title, isSmall, children }: ModalProps) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`flex flex-col rounded-lg p-10 bg-white dark:bg-gray-800 ${isSmall ? 'w-4/5 md:w-1/2 lg:w-1/3 h-2/5' : 'w-5/6 md:w-3/5 lg:w-2/4 h-5/6'}  overflow-y-auto text-black dark:text-white`}
+        className={`flex flex-col rounded-lg p-10 bg-white dark:bg-custom-navy ${isSmall ? 'w-4/5 md:w-1/2 lg:w-1/3 h-2/5' : 'w-5/6 md:w-3/5 lg:w-2/4 h-5/6'}  overflow-y-auto text-black dark:text-white`}
       >
         <h2 className="text-xl mb-4">{title}</h2>
         <div className="flex flex-col flex-grow">{children}</div>
