@@ -7,8 +7,8 @@ import './i18n/i18n.ts';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RecordsPage from './components/pages/RecordsPage/RecordsPage.tsx';
 import Page from './components/templates/Page/Page.tsx';
-import ErrorPage from './components/organisms/ErrorPage/ErrorPage.tsx';
 import HomePage from './components/pages/HomePage/HomePage.tsx';
+import ErrorPage from './components/pages/ErrorPage/ErrorPage.tsx';
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([

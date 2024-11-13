@@ -1,5 +1,5 @@
 import ThemeButton from '@atoms/ThemeButton/ThemeButton';
-import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
+import LanguageSwitcher from '../../molecules/LanguageSwitcher/LanguageSwitcher';
 import LinkButton from '../NavigationButton/NavigationButton';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +13,7 @@ const Header = () => {
   const isSimpleAppPath = location.pathname === '/simple-app';
 
   return (
-    <header className="sticky top-0 z-10 p-1 bg-custom-beige dark:bg-custom-navy transition-colors">
+    <header className="sticky top-0 z-10 p-1 bg-custom-beige-500 dark:bg-custom-dark-500 transition-colors">
       <div className="flex justify-between items-center">
         <Link href="/" className="m-0">
           <Logo />

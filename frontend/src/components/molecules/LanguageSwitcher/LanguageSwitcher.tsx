@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import IconEnglish from '@/components/atoms/Icons/IconEnglish';
-import IconPolish from '@/components/atoms/Icons/IconPolish';
-import Button from '@/components/atoms/Button/Button';
+import IconEnglish from '@atoms/Icons/IconEnglish';
+import IconPolish from '@atoms/Icons/IconPolish';
+import Button from '@atoms/Button/Button';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();

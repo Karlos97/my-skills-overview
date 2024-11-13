@@ -13,6 +13,7 @@ export default defineConfig(({ mode }) => {
         '@components': path.resolve(__dirname, './src/components'),
         '@i18n': path.resolve(__dirname, './src/i18n'),
         '@atoms': path.resolve(__dirname, './src/components/atoms'),
+        '@molecules': path.resolve(__dirname, './src/components/molecules'),
         '@organisms': path.resolve(__dirname, './src/components/organisms'),
         '@templates': path.resolve(__dirname, './src/components/templates'),
         '@pages': path.resolve(__dirname, './src/components/pages'),

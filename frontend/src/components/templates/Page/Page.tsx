@@ -5,7 +5,7 @@ import Footer from '@organisms/Footer/Footer';
 
 const Page = () => {
   return (
-    <div className="h-full w-full flex flex-col bg-custom-beige dark:bg-custom-navy max-w-6xl mx-auto">
+    <div className="h-full w-full flex flex-col bg-custom-beige-500 dark:bg-custom-dark-500 max-w-6xl mx-auto">
       <Header />
       <main>
         <Outlet />

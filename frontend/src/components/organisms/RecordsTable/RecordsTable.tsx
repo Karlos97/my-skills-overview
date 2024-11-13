@@ -253,7 +253,7 @@ const RecordsTable = () => {
           </Table>
         </div>
 
-        <div className="rounded-b-lg border-t border-gray-200 dark:border-gray-500 px-4 py-2 bg-custom-beige dark:bg-gray-400">
+        <div className="rounded-b-lg border-t border-gray-200 dark:border-gray-500 px-4 py-2 bg-custom-beige-500 dark:bg-gray-400">
           <ol className="flex justify-end gap-1 text-xs font-medium">
             <PaginationButton
               onClick={(e) => onPaginationButtonClickHandler(e, -1)}
