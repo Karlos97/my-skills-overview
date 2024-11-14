@@ -68,8 +68,8 @@ const ProjectList = () => {
   const { t } = useTranslation();
 
   return (
-    <div>
-      <h1 className="text-3xl font-semibold leading-10 text-left my-8">
+    <div className="mt-12">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold leading-7 sm:leading-8 md:leading-9 text-left my-2 sm:my-6">
         {`${t('homePage.projects.headerPart1')} `}
         <span className="text-custom-turquoise">
           {t('homePage.projects.headerPart2')}

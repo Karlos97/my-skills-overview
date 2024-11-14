@@ -1,7 +1,6 @@
 const Github = () => (
   <svg
-    width="42"
-    height="42"
+    className="w-8 h-8 sm:w-10 sm:h-10"
     viewBox="0 0 42 42"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

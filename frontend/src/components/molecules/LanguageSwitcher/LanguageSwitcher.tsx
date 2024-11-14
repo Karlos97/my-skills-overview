@@ -16,7 +16,7 @@ const LanguageSwitcher = () => {
     <>
       <Button
         onClick={() => changeLanguage(currentLanguage === 'pl' ? 'en' : 'pl')}
-        className="px-4 py-2 bg-transparent hover:bg-transparent hover:scale-110 cursor-pointer"
+        className="px-1 sm:px-2 md:px-4 py-2 bg-transparent hover:bg-transparent hover:scale-110 cursor-pointer"
       >
         {currentLanguage === 'pl' ? <IconEnglish /> : <IconPolish />}
       </Button>

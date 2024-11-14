@@ -70,7 +70,7 @@
         "description": "Pracowałem nad rankomatem(ranking kredytowy) z 2 milionami odwiedzin rocznie, poprawiając wydajność o ~30% w ciągu 3 miesięcy, poprawiając wyniki SEO oraz z backendem Node.js (używając MongoDB i PostgreSQL jako CMS), hostowaną na AWS, jednocześnie zarządzając hostingiem stron WordPress. Technologie obejmowały Swagger, React, MUI, AWS i inne."
       },
       "unikie": {
-        "role": "Mid Front-end Developer",
+        "role": "Mid Frontend Developer",
         "company": "Unikie",
         "description": "Pracowałem nad aplikacją do kontroli fabryki, skupiając się na wydajności i bezpieczeństwie, używając React, TypeScript, Sass, Pythona (do testowania), Storybook, Jenkins, DevOps, Kubernetes, Docker, Jira i BitBucket, z bezpośrednim kontaktem z klientem. Współtworzyłem również aplikację do E-meetingów (zdalnych rozmów), wykorzystując React, TypeScript, CSS-in-JS, Formik, RHF, Docker, WebRTC, Three.js, SignalR, WebSockets, REST API, Postman, Swagger i w małym stopniu Azure."
       },
@@ -80,7 +80,7 @@
         "description": "Opracowałem stronę e-commerce do sprzedaży ubrań, współpracując bezpośrednio z klientem, używając Next.js, React, TypeScript, Sass, Tailwind, Docker, DevOps (lokalne serwery, sieci), Node.js, MongoDB i REST API."
       },
       "railwaymen": {
-        "role": "Jr. Front-End Developer",
+        "role": "Jr. Frontend Developer",
         "company": "Railwaymen",
         "description": "Pracowałem nad aplikacją księgową na rynek UK oraz aplikacją do planowania czasu, wykorzystując React, Sass, TypeScript, RHF, Storybook, Jira, GitLab, HAML, Rails, Emotion i SCSS."
       },

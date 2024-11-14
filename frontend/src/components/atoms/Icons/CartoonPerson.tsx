@@ -1,7 +1,6 @@
 const CartoonPerson = () => (
   <svg
-    width="268"
-    height="512"
+    className="w-[100px] h-[200px] md:w-[268px] md:h-[512px]"
     viewBox="0 0 268 512"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,12 @@
-const Footer = () => {
+interface FooterProps {
+  children: React.ReactNode;
+}
+
+const Footer = ({ children }: FooterProps) => {
   return (
-    <footer className="sticky bottom-0 py-4 bg-custom-beige-500 dark:bg-custom-dark-500"></footer>
+    <footer className="py-4 bg-custom-beige-500 dark:bg-custom-dark-500">
+      {children}
+    </footer>
   );
 };
 
