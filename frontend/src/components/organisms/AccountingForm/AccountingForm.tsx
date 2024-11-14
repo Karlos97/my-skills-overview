@@ -1,15 +1,18 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import useErrorNotification from '@hooks/useErrorNotification';
+import useAddAccountingRecord from '@hooks/useAddAccountingRecord';
+import useEditAccountingRecord from '@hooks/useEditAccountingRecord';
+
 import Input from '@atoms/Input/Input';
 import Select from '@atoms/Select/Select';
 import Button from '@atoms/Button/Button';
-import useErrorNotification from '@hooks/useErrorNotification';
 import ErrorNotification from '@atoms/ErrorNotification/ErrorNotification';
-import useAddAccountingRecord from '@/helpers/hooks/useAddAccountingRecord';
-import { useEffect } from 'react';
+
 import { Record } from '../RecordsTable/RecordsTable';
-import useEditAccountingRecord from '@/helpers/hooks/useEditAccountingRecord';
-import { useTranslation } from 'react-i18next';
 import { FormData, formSchema, TransactionType } from './formSchema';
 
 interface AccountingFormProps {

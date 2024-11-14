@@ -1,5 +1,5 @@
-import Github from '@/components/atoms/Icons/Github';
-import Linkedin from '@/components/atoms/Icons/Linkedin';
+import Github from '@atoms/Icons/Github';
+import Linkedin from '@atoms/Icons/Linkedin';
 
 const SocialMediaButtonType = {
   LINKEDIN: 'linked-in',

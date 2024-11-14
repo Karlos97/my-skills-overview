@@ -1,9 +1,10 @@
-import CartoonPerson from '@/components/atoms/Icons/CartoonPerson';
-import ProjectList from '@/components/organisms/ProjectList/ProjectList';
+import { useTranslation } from 'react-i18next';
+
+import CartoonPerson from '@atoms/Icons/CartoonPerson';
+import ProjectList from '@organisms/ProjectList/ProjectList';
 import Github from '@atoms/Icons/Github';
 import Linkedin from '@atoms/Icons/Linkedin';
 import Link from '@organisms/Link/Link';
-import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
   const { t } = useTranslation();

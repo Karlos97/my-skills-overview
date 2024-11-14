@@ -1,14 +1,15 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import './index.scss';
-
-import './i18n/i18n.ts';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RecordsPage from './components/pages/RecordsPage/RecordsPage.tsx';
-import Page from './components/templates/Page/Page.tsx';
-import HomePage from './components/pages/HomePage/HomePage.tsx';
-import ErrorPage from './components/pages/ErrorPage/ErrorPage.tsx';
+
+import './index.scss';
+import './i18n/i18n.ts';
+
+import RecordsPage from '@pages/RecordsPage/RecordsPage';
+import Page from '@templates/Page/Page';
+import HomePage from '@pages/HomePage/HomePage';
+import ErrorPage from '@pages/ErrorPage/ErrorPage';
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
