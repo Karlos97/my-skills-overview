@@ -1,12 +1,9 @@
-import Badge from '@atoms/Badge/Badge';
+import Badge, { BadgeProps } from '@atoms/Badge/Badge';
 
 interface ProjectCardProps {
   role: string;
   company: string;
-  badges: {
-    text: string;
-    color: 'bg-green-500' | 'bg-yellow-500' | 'bg-purple-600' | 'bg-orange-500';
-  }[];
+  badges: BadgeProps[];
   description: string;
 }
 

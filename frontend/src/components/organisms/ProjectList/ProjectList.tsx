@@ -1,13 +1,11 @@
+import { BadgeProps } from '@/components/atoms/Badge/Badge';
 import ProjectCard from '@molecules/ProjectCard/ProjectCard';
 import { useTranslation } from 'react-i18next';
 
 interface Project {
   role: string;
   company: string;
-  badges: {
-    text: string;
-    color: 'bg-green-500' | 'bg-yellow-500' | 'bg-purple-600' | 'bg-orange-500';
-  }[];
+  badges: BadgeProps[];
   description: string;
 }
 
@@ -16,10 +14,10 @@ const projects: Project[] = [
     role: 'homePage.projects.finelf.role',
     company: 'homePage.projects.finelf.company',
     badges: [
-      { text: 'PostgreSQL', color: 'bg-green-500' },
-      { text: 'NodeJS', color: 'bg-yellow-500' },
-      { text: 'WordPress', color: 'bg-purple-600' },
-      { text: 'React', color: 'bg-orange-500' },
+      { text: 'PostgreSQL', color: 'green' },
+      { text: 'NodeJS', color: 'yellow' },
+      { text: 'WordPress', color: 'purple' },
+      { text: 'React', color: 'orange' },
     ],
     description: 'homePage.projects.finelf.description',
   },
@@ -27,10 +25,10 @@ const projects: Project[] = [
     role: 'homePage.projects.unikie.role',
     company: 'homePage.projects.unikie.company',
     badges: [
-      { text: 'React', color: 'bg-orange-500' },
-      { text: 'webRTC', color: 'bg-purple-600' },
-      { text: 'threeJS', color: 'bg-yellow-500' },
-      { text: 'Virtualization & Contenerization', color: 'bg-green-500' },
+      { text: 'React', color: 'orange' },
+      { text: 'webRTC', color: 'purple' },
+      { text: 'threeJS', color: 'yellow' },
+      { text: 'Virtualization & Contenerization', color: 'green' },
     ],
     description: 'homePage.projects.unikie.description',
   },
@@ -38,10 +36,10 @@ const projects: Project[] = [
     role: 'homePage.projects.privateCustomer.role',
     company: 'homePage.projects.privateCustomer.company',
     badges: [
-      { text: 'MongoDB', color: 'bg-yellow-500' },
-      { text: 'Devops', color: 'bg-green-500' },
-      { text: 'React', color: 'bg-orange-500' },
-      { text: 'Tailwind', color: 'bg-purple-600' },
+      { text: 'MongoDB', color: 'yellow' },
+      { text: 'Devops', color: 'green' },
+      { text: 'React', color: 'orange' },
+      { text: 'Tailwind', color: 'purple' },
     ],
     description: 'homePage.projects.privateCustomer.description',
   },
@@ -49,10 +47,10 @@ const projects: Project[] = [
     role: 'homePage.projects.railwaymen.role',
     company: 'homePage.projects.railwaymen.company',
     badges: [
-      { text: 'React', color: 'bg-orange-500' },
-      { text: 'Storybook', color: 'bg-green-500' },
-      { text: 'Rails', color: 'bg-yellow-500' },
-      { text: 'Haml', color: 'bg-purple-600' },
+      { text: 'React', color: 'orange' },
+      { text: 'Storybook', color: 'green' },
+      { text: 'Rails', color: 'yellow' },
+      { text: 'Haml', color: 'purple' },
     ],
     description: 'homePage.projects.railwaymen.description',
   },
