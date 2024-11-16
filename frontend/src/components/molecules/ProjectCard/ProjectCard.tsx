@@ -16,7 +16,7 @@ const ProjectCard = ({
   return (
     <div className="bg-custom-beige-300 dark:bg-custom-dark-300 p-6 rounded-lg shadow-md mt-4">
       <div className="flex flex-col sm:flex-row items-center gap-4">
-        <h3 className="flex justify-center text-lg font-bold flex-shrink-0 w-full sm:w-72 md:w-80 lg:w-96">
+        <h3 className="flex justify-start text-lg font-bold flex-shrink-0 w-full sm:w-72 md:w-80 lg:w-96">
           {role}
           {company ? ` - ${company}` : ''}
         </h3>

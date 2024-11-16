@@ -20,13 +20,20 @@ const Header = () => {
         </Link>
         <nav className="flex items-center space-x-2 md:space-x-4 text-sm sm:text-base md:text-lg">
           {isSimpleAppPath ? (
-            <LinkButton to="/"> {t('header.home')}</LinkButton>
+            <LinkButton to="/">
+              <span className="hidden sm:inline">{t('header.home')}</span>
+              <span className="sm:hidden">{t('header.homeShort')}</span>
+            </LinkButton>
           ) : (
             <LinkButton to="/simple-app?page=1&recordsPerPage=10">
-              {t('header.exampleApp')}
+              <span className="hidden sm:inline">{t('header.exampleApp')}</span>
+              <span className="sm:hidden">{t('header.exampleAppShort')}</span>
             </LinkButton>
           )}
-          <Link href="https://github.com/Karlos97">GitHub</Link>
+          <Link href="https://github.com/Karlos97">
+            <span className="hidden sm:inline">GitHub</span>
+            <span className="sm:hidden">Git</span>
+          </Link>
           <Link href="https://www.linkedin.com/in/karol-minta/">Linkedin</Link>
           <LanguageSwitcher />
           <ThemeButton />

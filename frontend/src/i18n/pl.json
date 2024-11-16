@@ -1,7 +1,9 @@
 {
   "header": {
     "home": "Strona Główna",
-    "exampleApp": "Przykładowa Aplikacja"
+    "exampleApp": "Przykładowa Aplikacja",
+    "homeShort": "Start",
+    "exampleAppShort": "App"
   },
   "recordsTable": {
     "header": "Tablica wpisów",

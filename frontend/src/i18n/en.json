@@ -1,7 +1,9 @@
 {
   "header": {
     "home": "Home",
-    "exampleApp": "Example App"
+    "exampleApp": "Example App",
+    "homeShort": "Home",
+    "exampleAppShort": "App"
   },
   "recordsTable": {
     "header": "Records Table",
