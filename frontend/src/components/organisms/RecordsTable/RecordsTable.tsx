@@ -1,9 +1,17 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import IconLeft from '@atoms/Icons/IconLeft';
-import IconRight from '@atoms/Icons/IconRight';
-import { Table, TableBody, TableRow, TableWrapper } from '@atoms/Table/Table';
-import PaginationButton from '@atoms/PaginationButton/PaginationButton';
+import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
+
+import {
+  Table,
+  TableBody,
+  TableData,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableWrapper,
+} from '@atoms/Table/Table';
 import { fetchBankRecords } from '@helpers/fetchBankRecords';
 import Modal from '@organisms/Modal/Modal';
 import useModal from '@hooks/useModal';
@@ -11,13 +19,13 @@ import RemoveAccoutingRecordForm from '@organisms/RemoveAccoutingRecordForm/Remo
 import BinIcon from '@atoms/Icons/Bin';
 import PencilIcon from '@atoms/Icons/Pencil';
 import AccountingForm from '../AccountingForm/AccountingForm';
-import { useTranslation } from 'react-i18next';
 import { TransactionType } from '../AccountingForm/formSchema';
-import { useSearchParams } from 'react-router-dom';
+import { TableNavigation } from '@molecules/TableNavigation/TableNavigation';
 
 interface Data {
   page: number;
   recordsPerPage: number;
+  totalItems: number;
   records: Record[];
   searchId: string;
 }
@@ -31,30 +39,6 @@ export interface Record {
   amount: number;
   type: TransactionType;
 }
-const TableHeader = ({ children }: { children: ReactNode }) => (
-  <th className="whitespace-nowrap px-4 py-2 font-medium text-slate-800 text-left">
-    {children}
-  </th>
-);
-
-interface TableDataProps {
-  children: ReactNode;
-  className?: string;
-  colSpan?: number;
-}
-
-const TableData = ({
-  children,
-  className = '',
-  colSpan = 1,
-}: TableDataProps) => (
-  <td
-    className={`${className} whitespace-nowrap px-4 py-2 font-medium text-slate-700`}
-    colSpan={colSpan}
-  >
-    {children}
-  </td>
-);
 
 const RecordsTable = () => {
   const { t } = useTranslation();
@@ -69,7 +53,7 @@ const RecordsTable = () => {
     openModal: openEditModal,
     closeModal: closeEditModalOpen,
   } = useModal();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const searchParamsPage = parseInt(searchParams.get('page') ?? '1');
   const searchParamsRecordsPerPage = parseInt(
     searchParams.get('recordsPerPage') ?? '1',
@@ -107,12 +91,15 @@ const RecordsTable = () => {
   }
 
   const onPaginationButtonClickHandler = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    value: number,
+    e: React.MouseEvent<HTMLAnchorElement>,
+    newPageNumber: number,
   ) => {
     e.preventDefault();
 
-    setPageNumber(pageNumber + value);
+    searchParams.set('page', newPageNumber.toString());
+    setSearchParams(searchParams);
+
+    setPageNumber(newPageNumber);
   };
 
   const onShowRemoveWarningModal = ({ id }: { id: string }) => {
@@ -161,31 +148,26 @@ const RecordsTable = () => {
           />
         )}
       </Modal>
-      <TableWrapper>
-        <div className="overflow-x-auto rounded-t-lg">
+
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg"></div>
+
+      <div>
+        <TableWrapper>
           <Table>
-            <thead>
-              <tr>
-                <TableHeader>{t('recordsTable.tableHeaders.id')}</TableHeader>
-                <TableHeader>
-                  {t('recordsTable.tableHeaders.accountNumber')}
-                </TableHeader>
-                <TableHeader>
-                  {t('recordsTable.tableHeaders.accountName')}
-                </TableHeader>
-                <TableHeader>{t('recordsTable.tableHeaders.iban')}</TableHeader>
-                <TableHeader>
-                  {t('recordsTable.tableHeaders.address')}
-                </TableHeader>
-                <TableHeader>
-                  {t('recordsTable.tableHeaders.amount')}
-                </TableHeader>
-                <TableHeader>{t('recordsTable.tableHeaders.type')}</TableHeader>
-                <TableHeader>
-                  {t('recordsTable.tableHeaders.action')}
-                </TableHeader>
-              </tr>
-            </thead>
+            <TableHeader>
+              <TableHead>
+                {t('recordsTable.tableHeaders.accountName')}
+              </TableHead>
+              <TableHead>{t('recordsTable.tableHeaders.id')}</TableHead>
+              <TableHead>
+                {t('recordsTable.tableHeaders.accountNumber')}
+              </TableHead>
+              <TableHead>{t('recordsTable.tableHeaders.iban')}</TableHead>
+              <TableHead>{t('recordsTable.tableHeaders.address')}</TableHead>
+              <TableHead>{t('recordsTable.tableHeaders.amount')}</TableHead>
+              <TableHead>{t('recordsTable.tableHeaders.type')}</TableHead>
+              <TableHead>{t('recordsTable.tableHeaders.action')}</TableHead>
+            </TableHeader>
             {data?.records?.length ? (
               <TableBody>
                 {data?.records.map(
@@ -199,9 +181,11 @@ const RecordsTable = () => {
                     type,
                   }) => (
                     <TableRow key={id}>
+                      <TableData className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {accountName}
+                      </TableData>
                       <TableData>{id}</TableData>
                       <TableData>{accountNumber}</TableData>
-                      <TableData>{accountName}</TableData>
                       <TableData>{iban}</TableData>
                       <TableData>{address}</TableData>
                       <TableData>{amount}</TableData>
@@ -251,29 +235,18 @@ const RecordsTable = () => {
               </TableBody>
             )}
           </Table>
-        </div>
+        </TableWrapper>
 
-        <div className="rounded-b-lg border-t border-gray-200 dark:border-gray-500 px-4 py-2 bg-custom-beige-500 dark:bg-gray-400">
-          <ol className="flex justify-end gap-1 text-xs font-medium">
-            <PaginationButton
-              onClick={(e) => onPaginationButtonClickHandler(e, -1)}
-              disabled={pageNumber === 1}
-              isIcon
-            >
-              <IconLeft />
-            </PaginationButton>
-            <PaginationButton isActive>{pageNumber}</PaginationButton>
-
-            <PaginationButton
-              onClick={(e) => onPaginationButtonClickHandler(e, 1)}
-              disabled={(data?.records?.length || 0) < recordsPerPage}
-              isIcon
-            >
-              <IconRight />
-            </PaginationButton>
-          </ol>
-        </div>
-      </TableWrapper>
+        <TableNavigation
+          pages={Math.ceil((data?.totalItems || 0) / recordsPerPage)}
+          currentPage={data?.page || 1}
+          items={recordsPerPage}
+          totalItems={data?.totalItems || 0}
+          onClick={(e, pageNumber) =>
+            onPaginationButtonClickHandler(e, pageNumber)
+          }
+        />
+      </div>
     </>
   );
 };

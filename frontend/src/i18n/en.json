@@ -19,6 +19,12 @@
       "type": "Type",
       "action": "Action"
     },
+    "tableNavigation": {
+      "showing": "Showing",
+      "of": "of",
+      "previous": "Previous",
+      "next": "Next"
+    },
     "noRecords": "This page is empty!",
     "form": {
       "modalFields": {

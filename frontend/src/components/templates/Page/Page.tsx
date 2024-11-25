@@ -6,7 +6,7 @@ import Copyright from '@atoms/Copyright/Copyright';
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-custom-beige-500 dark:bg-custom-dark-500 sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+    <div className="min-h-screen flex flex-col bg-custom-beige-500 dark:bg-custom-dark-500 sm:max-w-2xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto min-w-[20rem]">
       <Header />
       <main className="flex-1">
         <Outlet />

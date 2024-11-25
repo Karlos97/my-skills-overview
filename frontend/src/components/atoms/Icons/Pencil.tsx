@@ -1,6 +1,6 @@
 const PencilIcon = ({ onClick }: { onClick: () => void }) => (
   <svg
-    className="size-4 hover:scale-125 cursor-pointer text-gray-500 dark:text-gray-700 mr-2"
+    className="size-4 hover:scale-125 cursor-pointer text-blue-600 dark:text-blue-500 mr-2"
     version="1.1"
     id="Capa_1"
     xmlns="http://www.w3.org/2000/svg"

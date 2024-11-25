@@ -19,6 +19,12 @@
       "type": "Typ",
       "action": "Akcja"
     },
+    "tableNavigation": {
+      "showing": "Pokazuję",
+      "of": "z",
+      "previous": "Poprzedni",
+      "next": "Następny"
+    },
     "noRecords": "Tabela nie zawiera żadnych wpisów!",
     "form": {
       "modalFields": {

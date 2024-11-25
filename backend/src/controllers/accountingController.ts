@@ -34,6 +34,7 @@ interface RemoveRecord {
 interface ResponseData {
   page: number;
   recordsPerPage: number;
+  totalItems: number;
   records: Record[];
 }
 
@@ -53,14 +54,18 @@ export const getAccountingInfo = async (req: Request, res: Response) => {
       return;
     }
 
-    const accountingRecords = await prisma.accountingRecord.findMany({
-      skip: (bodyData.page - 1) * bodyData.recordsPerPage,
-      take: bodyData.recordsPerPage,
-    });
+    const [accountingRecords, totalCount] = await Promise.all([
+      prisma.accountingRecord.findMany({
+        skip: (bodyData.page - 1) * bodyData.recordsPerPage,
+        take: bodyData.recordsPerPage,
+      }),
+      prisma.accountingRecord.count(),
+    ]);
 
     const responseData: ResponseData = {
       page: bodyData.page,
       recordsPerPage: bodyData.recordsPerPage,
+      totalItems: totalCount,
       records: accountingRecords,
     };
     // Cache date only on production

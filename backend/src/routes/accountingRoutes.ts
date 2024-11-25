@@ -27,6 +27,9 @@ const accountingRoutes = Router();
  *               recordsPerPage:
  *                 type: number
  *                 description: Elements per page
+ *               totalItems:
+ *                 type: number
+ *                 description: All available records
  *             required:
  *               - page
  *               - recordsPerPage
