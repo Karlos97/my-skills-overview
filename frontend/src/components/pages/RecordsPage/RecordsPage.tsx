@@ -19,7 +19,7 @@ const RecordsPage = () => {
         <h1 className="mb-6 text-3xl text-gray-600 dark:text-white font-bold text-center">
           {t('recordsTable.header')}
         </h1>
-        <p className="text-center text-sm text-gray-900 dark:text-white mb-8">
+        <p className="text-center text-sm sm:text-base text-gray-900 dark:text-white mb-8">
           {t('recordsTable.description-1')}
           <a
             href="https://atomicdesign.bradfrost.com/chapter-2/"

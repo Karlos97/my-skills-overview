@@ -155,18 +155,20 @@ const RecordsTable = () => {
         <TableWrapper>
           <Table>
             <TableHeader>
-              <TableHead>
-                {t('recordsTable.tableHeaders.accountName')}
-              </TableHead>
-              <TableHead>{t('recordsTable.tableHeaders.id')}</TableHead>
-              <TableHead>
-                {t('recordsTable.tableHeaders.accountNumber')}
-              </TableHead>
-              <TableHead>{t('recordsTable.tableHeaders.iban')}</TableHead>
-              <TableHead>{t('recordsTable.tableHeaders.address')}</TableHead>
-              <TableHead>{t('recordsTable.tableHeaders.amount')}</TableHead>
-              <TableHead>{t('recordsTable.tableHeaders.type')}</TableHead>
-              <TableHead>{t('recordsTable.tableHeaders.action')}</TableHead>
+              <tr>
+                <TableHead>
+                  {t('recordsTable.tableHeaders.accountName')}
+                </TableHead>
+                <TableHead>{t('recordsTable.tableHeaders.id')}</TableHead>
+                <TableHead>
+                  {t('recordsTable.tableHeaders.accountNumber')}
+                </TableHead>
+                <TableHead>{t('recordsTable.tableHeaders.iban')}</TableHead>
+                <TableHead>{t('recordsTable.tableHeaders.address')}</TableHead>
+                <TableHead>{t('recordsTable.tableHeaders.amount')}</TableHead>
+                <TableHead>{t('recordsTable.tableHeaders.type')}</TableHead>
+                <TableHead>{t('recordsTable.tableHeaders.action')}</TableHead>
+              </tr>
             </TableHeader>
             {data?.records?.length ? (
               <TableBody>

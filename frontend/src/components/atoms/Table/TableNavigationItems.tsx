@@ -48,7 +48,9 @@ export const TableNavigationItem = ({
     <li>
       <a
         onClick={(e) => onClick(e, toPage)}
-        className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        className={`flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ${
+          isPrevious ? 'rounded-s-lg' : 'rounded-e-lg'
+        }`}
       >
         {isPrevious
           ? t('recordsTable.tableNavigation.previous')
@@ -74,7 +76,7 @@ export const PageNumbers = ({
   } else if (currentPage >= pages - 2) {
     start = pages - 4;
   } else {
-    start = currentPage - 2;
+    start = Math.max(currentPage - 2, 1);
   }
 
   const pageNumbers = Array.from(
