@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
+import BinIcon from '@atoms/Icons/Bin';
+import PencilIcon from '@atoms/Icons/Pencil';
 import {
   Table,
   TableBody,
@@ -12,15 +14,13 @@ import {
   TableRow,
   TableWrapper,
 } from '@atoms/Table/Table';
-import { fetchBankRecords } from '@helpers/fetchBankRecords';
-import Modal from '@organisms/Modal/Modal';
 import useModal from '@hooks/useModal';
+import { fetchBankRecords } from '@helpers/fetchBankRecords';
+import { TableNavigation } from '@molecules/TableNavigation/TableNavigation';
+import Modal from '@organisms/Modal/Modal';
 import RemoveAccoutingRecordForm from '@organisms/RemoveAccoutingRecordForm/RemoveAccoutingRecordForm';
-import BinIcon from '@atoms/Icons/Bin';
-import PencilIcon from '@atoms/Icons/Pencil';
 import AccountingForm from '../AccountingForm/AccountingForm';
 import { TransactionType } from '../AccountingForm/formSchema';
-import { TableNavigation } from '@molecules/TableNavigation/TableNavigation';
 
 interface Data {
   page: number;

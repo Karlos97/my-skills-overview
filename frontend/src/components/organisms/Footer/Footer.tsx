@@ -1,11 +1,9 @@
-interface FooterProps {
-  children: React.ReactNode;
-}
+import Copyright from '@/components/atoms/Copyright/Copyright';
 
-const Footer = ({ children }: FooterProps) => {
+const Footer = () => {
   return (
     <footer className="py-4 bg-custom-beige-500 dark:bg-custom-dark-500">
-      {children}
+      <Copyright />
     </footer>
   );
 };

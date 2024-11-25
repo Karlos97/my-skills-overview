@@ -1,8 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import {
   PageNumbers,
   TableNavigationItem,
-} from '@/components/atoms/Table/TableNavigationItems';
-import { useTranslation } from 'react-i18next';
+} from '@atoms/Table/TableNavigationItems';
 
 interface TableNavigationProps {
   className?: string;

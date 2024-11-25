@@ -7,6 +7,8 @@
   },
   "recordsTable": {
     "header": "Tablica wpisów",
+    "description-1": "Poniżej znajduje się tabela wpisów oraz prosty formularz dodawania nowych. Celem tego przykładu było stworzenie prostego skrawka, który występuje w większości aplikacji, czyli formularza dodającego dane, miejsca, w którym się je wyświetla, oraz możliwości edycji i usuwania. Komponenty zostały stworzone zgodnie z ",
+    "description-2": ". Formularz jest walidowany po stronie frontendu oraz backendu. Wszystkie operacje zapisywane są w logach serwera. W projekcie został dodany storybook po stronie frontendu oraz swagger po stronie backendu w ramach dokumentacji (obydwie technologie dostępne są tylko w środowisku developerskim).",
     "loading": "Ładowanie...",
     "error": "Błąd: ",
     "tableHeaders": {
@@ -63,7 +65,8 @@
         "confirmationHeader": "Czy na pewno chcesz usunąć ten wpis?",
         "button": "Usuń wpis"
       }
-    }
+    },
+    "addRecordButton": "Dodaj wpis"
   },
   "homePage": {
     "header": "Cześć, jestem",
@@ -100,6 +103,12 @@
     }
   },
   "footer": {
-    "addRecordButton": "Dodaj wpis"
+    "copyrightName": "Karlos97.",
+    "copyrightRights": "Wszystkie prawa zastrzeżone."
+  },
+  "atoms": {
+    "select": {
+      "selectAnOption": "Wybierz opcję"
+    }
   }
 }

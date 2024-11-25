@@ -1,11 +1,9 @@
-import { ReactNode } from 'react';
-
 interface ModalProps {
   title: string;
   isOpen: boolean;
   onClose: () => void;
   isSmall?: boolean;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const Modal = ({ isOpen, onClose, title, isSmall, children }: ModalProps) => {

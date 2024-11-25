@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import AccountingForm from './AccountingForm';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AccountingForm from './AccountingForm';
 
 const queryClient = new QueryClient();
 

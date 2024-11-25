@@ -1,6 +1,6 @@
-import { BadgeProps } from '@/components/atoms/Badge/Badge';
-import ProjectCard from '@molecules/ProjectCard/ProjectCard';
 import { useTranslation } from 'react-i18next';
+import { BadgeProps } from '@atoms/Badge/Badge';
+import ProjectCard from '@molecules/ProjectCard/ProjectCard';
 
 interface Project {
   role: string;

@@ -1,11 +1,9 @@
-// Libraries
 import {
   useRouteError,
   isRouteErrorResponse,
   useNavigate,
 } from 'react-router-dom';
 
-// Components
 import Button from '@atoms/Button/Button';
 
 const ErrorPage = () => {

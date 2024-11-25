@@ -1,8 +1,9 @@
+import { useTranslation } from 'react-i18next';
+
 import Button from '@atoms/Button/Button';
-import useErrorNotification from '@hooks/useErrorNotification';
 import ErrorNotification from '@atoms/ErrorNotification/ErrorNotification';
 import { useDeleteRecord } from '@hooks/useDeleteRecord';
-import { useTranslation } from 'react-i18next';
+import useErrorNotification from '@hooks/useErrorNotification';
 
 interface RemoveAccoutingRecordFormProps {
   id: string | null;

@@ -7,6 +7,8 @@
   },
   "recordsTable": {
     "header": "Records Table",
+    "description-1": "Below you can find the records table and a simple form for adding new ones. The goal of this example was to create a simple part that is present in most applications, i.e. a form for adding data, a place where it is displayed, and the possibility of editing and deleting. The components were created according to ",
+    "description-2": ". The form is validated on the frontend and backend. All operations are saved in server logs. In the project, storybook was added on the frontend side and swagger on the backend side for documentation purposes (both technologies are available only in the developers' environment).",
     "loading": " Loading...",
     "error": "Error: ",
     "tableHeaders": {
@@ -63,7 +65,8 @@
         "confirmationHeader": "Are you sure you want to delete record?",
         "button": "Remove Record"
       }
-    }
+    },
+    "addRecordButton": "Add Record"
   },
 
   "homePage": {
@@ -101,6 +104,12 @@
     }
   },
   "footer": {
-    "addRecordButton": "Add Record"
+    "copyrightName": "Karlos97.",
+    "copyrightRights": "All rights reserved."
+  },
+  "atoms": {
+    "select": {
+      "selectAnOption": "Select an option"
+    }
   }
 }

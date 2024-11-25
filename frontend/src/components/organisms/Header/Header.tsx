@@ -1,10 +1,11 @@
-import ThemeButton from '@atoms/ThemeButton/ThemeButton';
-import LanguageSwitcher from '@molecules/LanguageSwitcher/LanguageSwitcher';
-import LinkButton from '@organisms/NavigationButton/NavigationButton';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Link from '@organisms/Link/Link';
+
 import Logo from '@atoms/Icons/Logo';
+import ThemeButton from '@atoms/ThemeButton/ThemeButton';
+import LanguageSwitcher from '@molecules/LanguageSwitcher/LanguageSwitcher';
+import Link from '@organisms/Link/Link';
+import LinkButton from '@organisms/NavigationButton/NavigationButton';
 
 const Header = () => {
   const location = useLocation();
