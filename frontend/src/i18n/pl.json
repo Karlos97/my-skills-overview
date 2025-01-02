@@ -3,7 +3,8 @@
     "home": "Strona Główna",
     "exampleApp": "Przykładowa Aplikacja",
     "homeShort": "Start",
-    "exampleAppShort": "App"
+    "exampleAppShort": "App",
+    "chat": "Chat App"
   },
   "recordsTable": {
     "header": "Tablica wpisów",
@@ -101,6 +102,14 @@
         "description": "Spędziłem 5 lat w branży automatyki jako specjalista ds. automatyzacji. Byłem odpowiedzialny za automatyzację procesów, tj. pisanie programów na PLC (sterowniki programowalne)."
       }
     }
+  },
+  "chat": {
+    "header": "Asystent AI",
+    "description": "Aplikacja ponizej to czat zasilony sztuczną inteligencją, opracowana z wykorzystaniem Django, Ollama i modelu językowego Mistral. Zainspirowana Chatem GPT, aplikacja umożliwia interaktywne i intuicyjne rozmowy z użytkownikami, oferując inteligentne i kontekstowo świadome odpowiedzi. Łączy solidne zaplecze technologiczne z najnowocześniejszą technologią przetwarzania języka naturalnego, zapewniając płynne i angażujące doświadczenie użytkownika.",
+    "placeholder": "Zadaj pytanie...",
+    "send": "Wyślij",
+    "assistant": "Asystent",
+    "user": "Ty"
   },
   "footer": {
     "copyrightName": "Karlos97.",

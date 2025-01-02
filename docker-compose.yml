@@ -1,21 +1,21 @@
 services:
-  # #  COMMENT HTTPS-PORTAL, FRONTEND AND BACKEND FOR LOCAL DEVELOPMENT!
-  https-portal:
-    image: steveltn/https-portal:1
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    links:
-      - backend
-      - frontend
-    environment:
-      DOMAINS: "portfolio.karlos97.pl -> http://frontend:${VITE_FRONTEND_PORT}, portfolio-api.karlos97.pl -> http://backend:${BACKEND_PORT}"
-      # STAGE: "production"
-      CLIENT_MAX_BODY_SIZE: 25M
-      # FORCE_RENEW: "true"
-    volumes:
-      - https-portal-data:/var/lib/https-portal
+  # # #  COMMENT HTTPS-PORTAL, FRONTEND AND BACKEND FOR LOCAL DEVELOPMENT!
+  # https-portal:
+  #   image: steveltn/https-portal:1
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   links:
+  #     - backend
+  #     - frontend
+  #   environment:
+  #     DOMAINS: "portfolio.karlos97.pl -> http://frontend:${VITE_FRONTEND_PORT}, portfolio-api.karlos97.pl -> http://backend:${BACKEND_PORT}"
+  #     # STAGE: "production"
+  #     CLIENT_MAX_BODY_SIZE: 25M
+  #     # FORCE_RENEW: "true"
+  #   volumes:
+  #     - https-portal-data:/var/lib/https-portal
 
   frontend:
     container_name: frontend
@@ -25,6 +25,7 @@ services:
       args:
         - VITE_BACKEND_LINK
         - VITE_FRONTEND_PORT
+        - VITE_AI_SERVICE_LINK
     ports:
       - "${VITE_FRONTEND_PORT}:${VITE_FRONTEND_PORT}"
     depends_on:

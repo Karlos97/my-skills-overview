@@ -3,7 +3,8 @@
     "home": "Home",
     "exampleApp": "Example App",
     "homeShort": "Home",
-    "exampleAppShort": "App"
+    "exampleAppShort": "App",
+    "chat": "Chat App"
   },
   "recordsTable": {
     "header": "Records Table",
@@ -102,6 +103,14 @@
         "description": "I've spend 5 years in automation branch as automation specialist. I was responsible for automating processes, i.e. writing programs on PLC(programmable logic controllers)."
       }
     }
+  },
+  "chat": {
+    "header": "AI Assistant",
+    "description": "AI-powered assistant chat developed using Django, Ollama, and the Mistral language model. Inspired by ChatGPT, the app enables interactive and intuitive conversations with users, providing intelligent and context-aware responses. It combines a robust backend framework with state-of-the-art natural language processing technology to deliver a seamless and engaging user experience.",
+    "placeholder": "Type your prompt...",
+    "send": "Send",
+    "assistant": "Assistant",
+    "user": "You"
   },
   "footer": {
     "copyrightName": "Karlos97.",

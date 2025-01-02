@@ -31,6 +31,9 @@ const Header = () => {
               <span className="sm:hidden">{t('header.exampleAppShort')}</span>
             </LinkButton>
           )}
+          <LinkButton to="/chat">
+            <span className="hidden sm:inline">{t('header.chat')}</span>
+          </LinkButton>
           <Link href="https://github.com/Karlos97">
             <span className="hidden sm:inline">GitHub</span>
             <span className="sm:hidden">Git</span>

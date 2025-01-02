@@ -10,6 +10,7 @@ import RecordsPage from '@pages/RecordsPage/RecordsPage';
 import Page from '@templates/Page/Page';
 import HomePage from '@pages/HomePage/HomePage';
 import ErrorPage from '@pages/ErrorPage/ErrorPage';
+import ChatPage from '@pages/ChatPage/ChatPage.tsx';
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'simple-app',
         element: <RecordsPage />,
+      },
+      {
+        path: 'chat',
+        element: <ChatPage />,
       },
     ],
   },

@@ -4,9 +4,11 @@ WORKDIR /frontend
 
 ARG VITE_BACKEND_LINK
 ARG VITE_FRONTEND_PORT
+ARG VITE_AI_SERVICE_LINK
 
 ENV VITE_BACKEND_LINK=${VITE_BACKEND_LINK}
 ENV VITE_FRONTEND_PORT=${VITE_FRONTEND_PORT}
+ENV VITE_AI_SERVICE_LINK=${VITE_AI_SERVICE_LINK}
 
 COPY frontend/package.json ./
 
@@ -28,5 +30,4 @@ COPY --from=builder /frontend/nginx.conf /etc/nginx/
 
 EXPOSE ${VITE_FRONTEND_PORT}
 
-# CMD ["yarn", "start"]
 CMD ["nginx", "-g", "daemon off;"]
