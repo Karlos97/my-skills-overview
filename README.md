@@ -14,7 +14,6 @@ With a strong emphasis on performance optimization and comprehensive documentati
 
 The folder structure is divided into `frontend` and `backend`. Each folder has its own `README.md` file describing further technical details.
 This project is utylizing front and backend technologies and project patterns. The whole app is wrapped in containers with auto ssl included as a part of dev ops.
-To fully run and test production version comment out `steveltn/https-portal` container as it needs open ports 80, 443 and external DNS redirection(which was used to host this very project).
 
 # Prerequisites
 
@@ -63,7 +62,7 @@ Source: [Stackoverflow](https://stackoverflow.com/questions/66912085/why-is-dock
 
 ### Private Hosting #bragging
 
-I used to host apps like this in my private home lab, utilizing [https-portal](https://hub.docker.com/r/steveltn/https-portal/dockerfile), which provides auto ssl, making it easy for developers to configure. Alternatively, I used Certbot and open lts. I also used to set different apps like own GitLab, private VPNs, own clouds and I've always took care of automated backups, keeping in mind security and even created an uninterruptible power supply (UPS) and electrical box for my servers(to be safe not only from virtual threats, but also physical ones). Feel free to ask if you want more details on this setup.
+I used to host apps like this in my private home lab, utilizing [https-portal](https://hub.docker.com/r/steveltn/https-portal/dockerfile), which provides auto ssl, making it easy for developers to configure. Alternatively, I used Certbot and open lts / nginx. I also used to set different apps like own GitLab, private VPNs, own clouds and I've always took care of automated backups, keeping in mind security and even created an uninterruptible power supply (UPS) and electrical box for my servers(to be safe not only from virtual threats, but also physical ones). Feel free to ask if you want more details on this setup.
 
 ### Summary
 
