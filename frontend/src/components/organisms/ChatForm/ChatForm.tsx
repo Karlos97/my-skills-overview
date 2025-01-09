@@ -33,7 +33,7 @@ const ChatForm = ({ onSend, loading }: ChatFormProps) => {
     >
       <div className="flex-grow">
         <Input
-          label={'Chat message'}
+          label={t('chat.chatLabel')}
           placeholder={t('chat.placeholder')}
           {...register('prompt')}
           error={errors.prompt}

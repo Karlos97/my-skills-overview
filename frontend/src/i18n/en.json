@@ -4,7 +4,7 @@
     "exampleApp": "Example App",
     "homeShort": "Home",
     "exampleAppShort": "App",
-    "chat": "Chat App"
+    "chat": "Chat"
   },
   "recordsTable": {
     "header": "Records Table",
@@ -108,6 +108,7 @@
     "header": "AI Assistant",
     "description": "AI-powered assistant chat developed using Django, Ollama, and the Mistral language model. Inspired by ChatGPT, the app enables interactive and intuitive conversations with users, providing intelligent and context-aware responses. It combines a robust backend framework with state-of-the-art natural language processing technology to deliver a seamless and engaging user experience.",
     "placeholder": "Type your prompt...",
+    "chatLabel": "Chat message",
     "send": "Send",
     "assistant": "Assistant",
     "user": "You"

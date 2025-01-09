@@ -4,7 +4,7 @@
     "exampleApp": "Przykładowa Aplikacja",
     "homeShort": "Start",
     "exampleAppShort": "App",
-    "chat": "Chat App"
+    "chat": "Chat"
   },
   "recordsTable": {
     "header": "Tablica wpisów",
@@ -107,6 +107,7 @@
     "header": "Asystent AI",
     "description": "Aplikacja ponizej to czat zasilony sztuczną inteligencją, opracowana z wykorzystaniem Django, Ollama i modelu językowego Mistral. Zainspirowana Chatem GPT, aplikacja umożliwia interaktywne i intuicyjne rozmowy z użytkownikami, oferując inteligentne i kontekstowo świadome odpowiedzi. Łączy solidne zaplecze technologiczne z najnowocześniejszą technologią przetwarzania języka naturalnego, zapewniając płynne i angażujące doświadczenie użytkownika.",
     "placeholder": "Zadaj pytanie...",
+    "chatLabel": "Wiadomość",
     "send": "Wyślij",
     "assistant": "Asystent",
     "user": "Ty"
