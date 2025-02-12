@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Reminder from '@atoms/Reminder/Reminder';
 import ChatHistory from '@organisms/ChatHistory/ChatHistory';
 import ChatForm from '@organisms/ChatForm/ChatForm';
 import ChatIncomingAnswer from '@organisms/ChatIncomingTransfer/ChatIncomingTransfer';
@@ -47,6 +48,9 @@ const ChatPage = () => {
         <p className="text-center text-sm sm:text-base text-gray-900 dark:text-white mb-8">
           {t('chat.description')}
         </p>
+        <Reminder>
+          {t('chat.reminder')}
+        </Reminder>
       </div>
       <ChatHistory messages={messages} />
       {isLoading && <ChatIncomingAnswer response={modelResponse} />}

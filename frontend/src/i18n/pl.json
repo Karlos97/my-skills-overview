@@ -106,6 +106,7 @@
   "chat": {
     "header": "Asystent AI",
     "description": "Aplikacja ponizej to czat zasilony sztuczną inteligencją, opracowana z wykorzystaniem Django, Ollama i modelu językowego Mistral. Zainspirowana Chatem GPT, aplikacja umożliwia interaktywne i intuicyjne rozmowy z użytkownikami, oferując inteligentne i kontekstowo świadome odpowiedzi. Łączy solidne zaplecze technologiczne z najnowocześniejszą technologią przetwarzania języka naturalnego, zapewniając płynne i angażujące doświadczenie użytkownika.",
+    "reminder": "Proszę pamiętać, że to tylko Proof of Concept (PoC). Aplikacja jest hostowana na prywatnym serwerze o ograniczonych zasobach, więc wydajność może być różna. Czas odpowiedzi może wynosić od 30 do 60 sekund w zależności od obłożenia serwera. Cała konfiguracja DevOps oraz zabezpieczenia zostały przeze mnie zaimplementowane od zera. Dziękuję za zrozumienie!",
     "placeholder": "Zadaj pytanie...",
     "chatLabel": "Wiadomość",
     "send": "Wyślij",

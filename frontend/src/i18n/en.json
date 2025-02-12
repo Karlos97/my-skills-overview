@@ -69,7 +69,6 @@
     },
     "addRecordButton": "Add Record"
   },
-
   "homePage": {
     "header": "Hi there, I’m",
     "name": "Karol",
@@ -107,6 +106,7 @@
   "chat": {
     "header": "AI Assistant",
     "description": "AI-powered assistant chat developed using Django, Ollama, and the Mistral language model. Inspired by ChatGPT, the app enables interactive and intuitive conversations with users, providing intelligent and context-aware responses. It combines a robust backend framework with state-of-the-art natural language processing technology to deliver a seamless and engaging user experience.",
+    "reminder": "Please keep in mind that this is a Proof of Concept (PoC). It is hosted on a private server with limited resources, so performance may vary. Response times can range from 30 to 60 seconds depending on server load. All DevOps and security configurations were implemented by me from scratch. Thank you for your understanding!",
     "placeholder": "Type your prompt...",
     "chatLabel": "Chat message",
     "send": "Send",
