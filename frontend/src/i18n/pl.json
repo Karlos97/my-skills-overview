@@ -72,34 +72,39 @@
   "homePage": {
     "header": "Cześć, jestem",
     "name": "Karol",
-    "description": "W przeszłości pracowałem z klientami z Finlandii, Litwy, Niemiec, Francji i Włoch. Kierowałem instalacjami maszyn przemysłowych jako klient, oraz jako specjalista techniczny, bezpośrednio współpracowałem z klientami, oferując wsparcie techniczne i usługi programistyczne. Od kilku lat zajmuję się tym samym charakterem działalności, tj. doradztwem i usługami programistycznymi, jednakże w branży webowej.",
+    "description": "Przez ostatnie 6 lat skupiłem się na technologiach webowych, współpracując z klientami z Finlandii, Litwy, Niemiec, Francji, Włoch i USA. Jako specjalista techniczny, bezpośrednio współpracuję z klientami, oferując bieżące wsparcie techniczne i usługi programistyczne. Jestem ambitną, szybko uczącą się i zawsze zmotywowaną osobą z silną pasją do technologii.",
     "projects": {
       "headerPart1": "Ostatnie",
       "headerPart2": "Projekty",
-      "finelf": {
-        "role": "Fullstack Developer",
-        "company": "Finelf",
-        "description": "Pracowałem nad rankomatem(ranking kredytowy) z 2 milionami odwiedzin rocznie, poprawiając wydajność o ~30% w ciągu 3 miesięcy, poprawiając wyniki SEO oraz z backendem Node.js (używając MongoDB i PostgreSQL jako CMS), hostowaną na AWS, jednocześnie zarządzając hostingiem stron WordPress. Technologie obejmowały Swagger, React, MUI, AWS i inne."
+      "roche": {
+        "role": "Full-Stack Developer",
+        "company": "Roche via Square One",
+        "description": "Zaprojektowałem architekturę systemu i rozwinąłem aplikację od podstaw używając AWS SDK (IaC): DynamoDB, Serverless Lambdas, OpenSearch, S3, Route53, Amplify, AppSync, SES, CloudWatch i SQS. Wdrożyłem pipeline CI/CD z GitHub, umożliwiając 3-poziomowy deployment z automatycznym lintingiem, buildami, testami unit/E2E na 3 oddzielnych kontach AWS. Mentorowałem członków zespołu i uczestniczyłem w globalnym planowaniu."
       },
-      "unikie": {
-        "role": "Mid Frontend Developer",
-        "company": "Unikie",
-        "description": "Pracowałem nad aplikacją do kontroli fabryki, skupiając się na wydajności i bezpieczeństwie, używając React, TypeScript, Sass, Pythona (do testowania), Storybook, Jenkins, DevOps, Kubernetes, Docker, Jira i BitBucket, z bezpośrednim kontaktem z klientem. Współtworzyłem również aplikację do E-meetingów (zdalnych rozmów), wykorzystując React, TypeScript, CSS-in-JS, Formik, RHF, Docker, WebRTC, Three.js, SignalR, WebSockets, REST API, Postman, Swagger i w małym stopniu Azure."
+      "finelf": {
+        "role": "Full-Stack Developer",
+        "company": "Finelf",
+        "description": "Rozwijałem i optymalizowałem aplikację rankingu kredytowego (2M odwiedzających/rok), poprawiając wydajność o 30% i wyniki SEO w ciągu 3 miesięcy. Utrzymywałem CMS Node.js z React i TypeScript, hostowany na AWS (EC2, Route53, RDS, S3). Współtworzyłem aplikacje fin-tech i pomagałem w migracji aplikacji z software house'ów do nowoczesnych stacków."
+      },
+      "valmet": {
+        "role": "Mid Front-End Developer",
+        "company": "Valmet via Unikie",
+        "description": "Rozwijałem wysokowydajną aplikację kontroli fabryki (React, TypeScript, Sass) z surowymi wymaganiami bezpieczeństwa i wydajności. Pracowałem z Pythonem do testowania, Storybook, Jenkins, Kubernetes i Docker. Współtworzyłem aplikację VR/browser do e-meetingów (React, TypeScript, WebRTC, Three.js, WebSockets)."
       },
       "privateCustomer": {
-        "role": "Fullstack Developer",
+        "role": "Full-Stack Developer (Kontrakt)",
         "company": "Klient prywatny",
-        "description": "Opracowałem stronę e-commerce do sprzedaży ubrań, współpracując bezpośrednio z klientem, używając Next.js, React, TypeScript, Sass, Tailwind, Docker, DevOps (lokalne serwery, sieci), Node.js, MongoDB i REST API."
+        "description": "Zbudowałem platformę e-commerce dla marki odzieżowej używając Next.js, React, TypeScript, Tailwind i MongoDB. Zarządzałem DevOps (lokalne serwery, Docker) i utrzymywałem bezpośrednią komunikację z klientem."
       },
       "railwaymen": {
-        "role": "Jr. Frontend Developer",
+        "role": "Junior Front-End Developer",
         "company": "Railwaymen",
-        "description": "Pracowałem nad aplikacją księgową na rynek UK oraz aplikacją do planowania czasu, wykorzystując React, Sass, TypeScript, RHF, Storybook, Jira, GitLab, HAML, Rails, Emotion i SCSS."
+        "description": "Rozwijałem aplikację księgową na rynek UK (React, Sass, Storybook) i pracowałem nad aplikacją do planowania czasu (React, TypeScript, SCSS, GitLab)."
       },
-      "rest": {
-        "role": "Branża automatyki",
-        "company": "",
-        "description": "Spędziłem 5 lat w branży automatyki jako specjalista ds. automatyzacji. Byłem odpowiedzialny za automatyzację procesów, tj. pisanie programów na PLC (sterowniki programowalne)."
+      "automation": {
+        "role": "Specjalista IT / OT",
+        "company": "ATREM, DUNI, MONDI",
+        "description": "Pracowałem jako specjalista automatyki programując sterowniki logiczne (PLC) i panele operatorskie (HMI). Uczestniczyłem w międzynarodowych projektach automatyki przemysłowej."
       }
     }
   },

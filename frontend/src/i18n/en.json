@@ -72,34 +72,39 @@
   "homePage": {
     "header": "Hi there, I’m",
     "name": "Karol",
-    "description": "I was working with clients from Finland, Lithuania, Germany, France and Italy. I previously led installations of industrial machines as a customer, and now, as a technical specialist, I engage directly with clients, providing ongoing technical support and programming services.",
+    "description": "For the past 6 years, I have focused on web technologies, working with clients from Finland, Lithuania, Germany, France, Italy and US. As a technical specialist, I engage directly with clients, providing ongoing technical support and programming services. I am an ambitious, fast-learning, and always motivated individual with a strong passion for technology.",
     "projects": {
       "headerPart1": "Recent",
       "headerPart2": "Projects",
-      "finelf": {
-        "role": "Fullstack Developer",
-        "company": "Finelf",
-        "description": "Worked on a Credit Ranking App with 2 million annual visitors, improving performance by ~30% in 3 months and enhancing SEO, with a Node.js backend (using MongoDB and PostgreSQL as CMS), hosted on AWS, while also managing the hosting of WordPress sites. Technologies included Swagger, React, MUI, AWS, and others."
+      "roche": {
+        "role": "Full-Stack Developer",
+        "company": "Roche via Square One",
+        "description": "Projected system architecture and developed an application from scratch using AWS SDK (IaC): DynamoDB, Serverless Lambdas, OpenSearch, S3, Route53, Amplify, AppSync, SES, CloudWatch and SQS. Implemented a CI/CD pipeline with GitHub, enabling 3-level deployment with automated linting, builds, unit/E2E tests across 3 AWS accounts. Mentored team members and participated in global planning."
       },
-      "unikie": {
-        "role": "Mid Frontend Developer",
-        "company": "Unikie",
-        "description": "Worked on a Factory Control App, focused on performance and safety, using React, TypeScript, Sass, Python (for testing), Storybook, Jenkins, DevOps, Kubernetes, Docker, Jira, and BitBucket, with direct client contact. Also contributed to an E-meetings App for remote calls, utilizing React, TypeScript, CSS-in-JS, Formik, RHF, Docker, WebRTC, Three.js, SignalR, WebSockets, REST API, Postman, Swagger, and Azure."
+      "finelf": {
+        "role": "Full-Stack Developer",
+        "company": "Finelf",
+        "description": "Developed and optimized a credit ranking app (2M visitors/year), improving performance by 30% and enhancing SEO results within 3 months. Maintained a Node.js CMS with React and TypeScript, hosted on AWS (EC2, Route53, RDS, S3). Contributed to fin-tech applications and helped migrate apps from software houses to modern stacks."
+      },
+      "valmet": {
+        "role": "Mid Front-End Developer",
+        "company": "Valmet via Unikie",
+        "description": "Developed a high-performance factory control application (React, TypeScript, Sass) with strict safety and performance requirements. Worked with Python for testing, Storybook, Jenkins, Kubernetes, and Docker. Contributed to a VR/browser e-meetings app (React, TypeScript, WebRTC, Three.js, WebSockets)."
       },
       "privateCustomer": {
-        "role": "Fullstack Developer",
-        "company": "Private Customer",
-        "description": "Developed an e-commerce site for selling clothes, working directly with the client, using Next.js, React, TypeScript, Sass, Tailwind, Docker, DevOps (local servers), Node.js, MongoDB, and REST API."
+        "role": "Full-Stack Developer (Contract)",
+        "company": "Private Client",
+        "description": "Built an e-commerce platform for a clothing brand using Next.js, React, TypeScript, Tailwind, and MongoDB. Managed DevOps (local servers, Docker) and maintained direct client communication."
       },
       "railwaymen": {
-        "role": "Jr. Frontend Developer",
+        "role": "Junior Front-End Developer",
         "company": "Railwaymen",
-        "description": "Worked on an Accounting App for the UK market and a Time Scheduling App, utilizing React, Sass, TypeScript, RHF, Storybook, Jira, GitLab, HAML, Rails, Emotion, and SCSS."
+        "description": "Developed an accounting app for the UK market (React, Sass, Storybook) and worked on a time scheduling app (React, TypeScript, SCSS, GitLab)."
       },
-      "rest": {
-        "role": "Automation Branch",
-        "company": "",
-        "description": "I've spend 5 years in automation branch as automation specialist. I was responsible for automating processes, i.e. writing programs on PLC(programmable logic controllers)."
+      "automation": {
+        "role": "IT / OT Specialist",
+        "company": "ATREM, DUNI, MONDI",
+        "description": "Worked as automation specialist programming logic controllers (PLC) and operator panels (HMI) devices. Participated in international projects in industrial automation."
       }
     }
   },
