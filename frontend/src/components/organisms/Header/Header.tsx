@@ -35,6 +35,10 @@ const Header = () => {
               <span className="inline">{t('header.chat')}</span>
             </LinkButton>
           )}
+          <Link href="https://pixie-game.karlos97.com.pl">
+            <span className="hidden sm:inline">Simple Game</span>
+            <span className="sm:hidden">Game</span>
+          </Link>
           <Link href="https://github.com/Karlos97">
             <span className="hidden sm:inline">GitHub</span>
             <span className="sm:hidden">Git</span>
