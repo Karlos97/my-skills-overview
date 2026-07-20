@@ -17,7 +17,7 @@ const projects: Project[] = [
       { text: 'NodeJS', color: 'accent' },
       { text: 'TypeScript', color: 'primary' },
       { text: 'AWS', color: 'primary' },
-      { text: 'Step Fc', color: 'secondary' },
+      { text: 'Step Functions', color: 'secondary' },
       { text: 'Terraform', color: 'warning' },
       { text: 'DataDog', color: 'accent' },
     ],

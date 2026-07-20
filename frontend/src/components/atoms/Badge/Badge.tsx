@@ -13,7 +13,7 @@ const colorVariants = {
 const Badge = ({ text, color }: BadgeProps) => {
   return (
     <span
-      className={`text-white text-sm font-semibold m-1 px-2 py-1 rounded w-min h-fit ${colorVariants[color]}`}
+      className={`text-white text-sm font-semibold m-1 px-2 py-1 rounded w-min h-fit whitespace-nowrap ${colorVariants[color]}`}
     >
       {text}
     </span>
