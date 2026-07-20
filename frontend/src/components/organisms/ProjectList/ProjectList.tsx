@@ -11,6 +11,19 @@ interface Project {
 
 const projects: Project[] = [
   {
+    role: 'homePage.projects.itv.role',
+    company: 'homePage.projects.itv.company',
+    badges: [
+      { text: 'NodeJS', color: 'accent' },
+      { text: 'TypeScript', color: 'primary' },
+      { text: 'AWS', color: 'primary' },
+      { text: 'Step Functions', color: 'secondary' },
+      { text: 'Terraform', color: 'warning' },
+      { text: 'DataDog', color: 'accent' },
+    ],
+    description: 'homePage.projects.itv.description',
+  },
+  {
     role: 'homePage.projects.roche.role',
     company: 'homePage.projects.roche.company',
     badges: [
@@ -22,6 +35,20 @@ const projects: Project[] = [
       { text: 'CI/CD', color: 'accent' },
     ],
     description: 'homePage.projects.roche.description',
+  },
+  {
+    role: 'homePage.projects.vegasCoins.role',
+    company: 'homePage.projects.vegasCoins.company',
+    badges: [
+      { text: 'NodeJS', color: 'accent' },
+      { text: 'React', color: 'warning' },
+      { text: 'Angular', color: 'primary' },
+      { text: 'PostgreSQL', color: 'secondary' },
+      { text: 'Prisma', color: 'primary' },
+      { text: 'AWS', color: 'primary' },
+      { text: 'Docker', color: 'accent' },
+    ],
+    description: 'homePage.projects.vegasCoins.description',
   },
   {
     role: 'homePage.projects.finelf.role',

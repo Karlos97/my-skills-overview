@@ -76,10 +76,20 @@
     "projects": {
       "headerPart1": "Ostatnie",
       "headerPart2": "Projekty",
+      "itv": {
+        "role": "Full-Stack Developer",
+        "company": "ITV",
+        "description": "Refaktoryzowałem aplikacje systemu broadcastingu z Pythona do TypeScript dla drugiej największej sieci telewizyjnej w UK. Pracowałem na środowiskach efemerycznych w podejściu IaaC (Terraform) z zaawansowanym testowaniem (unit, integracyjne, komponentowe, shadow runs). Stack: NodeJS, TypeScript, AWS (DynamoDB, Serverless Lambdas, Step Functions, S3, API Gateway, CloudWatch), monitoring w DataDog (własne metryki i dashboardy) oraz CI/CD na GitHub."
+      },
       "roche": {
         "role": "Full-Stack Developer",
         "company": "Roche via Square One",
-        "description": "Zaprojektowałem architekturę systemu i rozwinąłem aplikację od podstaw używając AWS SDK (IaC): DynamoDB, Serverless Lambdas, OpenSearch, S3, Route53, Amplify, AppSync, SES, CloudWatch i SQS. Wdrożyłem pipeline CI/CD z GitHub, umożliwiając 3-poziomowy deployment z automatycznym lintingiem, buildami, testami unit/E2E na 3 oddzielnych kontach AWS. Mentorowałem członków zespołu i uczestniczyłem w globalnym planowaniu."
+        "description": "Stworzyłem portal do zarządzania domenami w całej firmie Roche, ograniczając operacje manualne i usprawniając przepływ informacji. Zaprojektowałem architekturę systemu i rozwinąłem aplikację od podstaw używając AWS SDK (IaC): DynamoDB, Serverless Lambdas, OpenSearch, S3, Route53, Amplify, AppSync, SES, CloudWatch i SQS, z domenami w Cloudflare i autoryzacją przez SAML SSO/SLO. Wdrożyłem pipeline CI/CD z GitHub, umożliwiając 3-poziomowy deployment z automatycznym lintingiem, buildami, testami unit/E2E na 3 oddzielnych kontach AWS. Mentorowałem członków zespołu i uczestniczyłem w globalnym planowaniu."
+      },
+      "vegasCoins": {
+        "role": "Full-Stack Developer",
+        "company": "Vegas Coins",
+        "description": "Rozwijałem i utrzymywałem sweepstakes casino oraz crypto casino. Przejąłem odpowiedzialność za social casino od zewnętrznego software house'u i rozwijałem je dalej (NodeJS, React, Bull Queue, Docker na AWS: RDS, S3, Amplify, AppSync, CloudWatch, CodePipeline, ECS/Fargate, z Cloudflare). Zbudowałem także kilka mniejszych systemów do zbierania danych wspierających uruchomienie nowego crypto casino (NodeJS, React, Angular, PostgreSQL, TypeScript, Prisma ORM, deploy na VPS)."
       },
       "finelf": {
         "role": "Full-Stack Developer",
@@ -97,7 +107,7 @@
         "description": "Zbudowałem platformę e-commerce dla marki odzieżowej używając Next.js, React, TypeScript, Tailwind i MongoDB. Zarządzałem DevOps (lokalne serwery, Docker) i utrzymywałem bezpośrednią komunikację z klientem."
       },
       "railwaymen": {
-        "role": "Junior Front-End Developer",
+        "role": "Front-End Developer",
         "company": "Railwaymen",
         "description": "Rozwijałem aplikację księgową na rynek UK (React, Sass, Storybook) i pracowałem nad aplikacją do planowania czasu (React, TypeScript, SCSS, GitLab)."
       },
