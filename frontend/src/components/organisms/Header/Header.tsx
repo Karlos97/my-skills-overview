@@ -17,7 +17,7 @@ const Header = () => {
         <Link href="/" className="!m-0">
           <Logo />
         </Link>
-        <nav className="flex items-center space-x-2 md:space-x-4 text-sm sm:text-base md:text-lg">
+        <nav className="flex items-center space-x-1 sm:space-x-2 md:space-x-4 text-sm sm:text-base md:text-lg">
           {location.pathname !== '/' && (
             <LinkButton to="/">
               <span className="hidden sm:inline">{t('header.home')}</span>
