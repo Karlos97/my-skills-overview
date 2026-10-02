@@ -35,7 +35,7 @@ const Header = () => {
               <span className="inline">{t('header.chat')}</span>
             </LinkButton>
           )}
-          <Link href="https://pixie-game.karlos97.com.pl">
+          <Link href="https://pixie-game.karlos97.eu">
             <span className="hidden sm:inline">Simple Game</span>
             <span className="sm:hidden">Game</span>
           </Link>
